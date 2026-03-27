@@ -7,6 +7,10 @@ producción**.
 Proporciona un sistema completo de autenticación y gestión de sesiones
 basado en JWT con capacidades avanzadas de seguridad.
 
+## 📦 Version
+
+Current version: **v0.1.0**
+
 ------------------------------------------------------------------------
 
 ## ✨ Features
