@@ -9,6 +9,7 @@ import com.davidrr.security.auth.exception.RefreshTokenExpiredException;
 import com.davidrr.security.auth.exception.RefreshTokenInvalidException;
 import com.davidrr.security.auth.exception.RefreshTokenReuseException;
 import com.davidrr.security.auth.exception.SuspiciousSessionException;
+import com.davidrr.security.auth.port.UserLoginAuditPort;
 import com.davidrr.security.auth.port.UserProvider;
 import com.davidrr.security.auth.port.UserRegistrationPort;
 import com.davidrr.security.auth.service.AuthService;
@@ -49,6 +50,8 @@ public class AuthServiceImpl implements AuthService {
     private final UserRegistrationPort userRegistrationPort;
     private final ApplicationEventPublisher eventPublisher;
     private final PasswordEncoder passwordEncoder;
+
+    private final UserLoginAuditPort userLoginAuditPort;
 
     @Override
     @Transactional
@@ -149,6 +152,8 @@ public class AuthServiceImpl implements AuthService {
                             "Login successful"
                     )
             );
+
+            userLoginAuditPort.recordSuccessfulLogin(userDetails.getUsername());
 
             return new AuthTokens(accessToken, refreshToken);
 
