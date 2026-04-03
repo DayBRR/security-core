@@ -1,13 +1,11 @@
 package com.davidrr.security.auth.service;
 
-import com.davidrr.security.auth.dto.AuthRequest;
-import com.davidrr.security.auth.dto.AuthTokens;
-import com.davidrr.security.auth.dto.SessionFingerprint;
-import com.davidrr.security.auth.dto.SessionResponse;
-
+import com.davidrr.security.auth.dto.*;
 import java.util.List;
 
 public interface AuthService {
+
+    AuthTokens register(RegisterRequest request, SessionFingerprint fingerprint);
 
     AuthTokens login(AuthRequest request, SessionFingerprint fingerprint);
 
