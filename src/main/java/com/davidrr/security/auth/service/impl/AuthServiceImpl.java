@@ -3,16 +3,14 @@ package com.davidrr.security.auth.service.impl;
 import com.davidrr.security.audit.SecurityAuditContext;
 import com.davidrr.security.audit.SecurityAuditService;
 import com.davidrr.security.audit.SecurityEventType;
-import com.davidrr.security.auth.dto.AuthRequest;
-import com.davidrr.security.auth.dto.AuthTokens;
-import com.davidrr.security.auth.dto.RefreshRotationResult;
-import com.davidrr.security.auth.dto.SessionFingerprint;
-import com.davidrr.security.auth.dto.SessionResponse;
+import com.davidrr.security.auth.dto.*;
+import com.davidrr.security.auth.event.UserRegisteredEvent;
 import com.davidrr.security.auth.exception.RefreshTokenExpiredException;
 import com.davidrr.security.auth.exception.RefreshTokenInvalidException;
 import com.davidrr.security.auth.exception.RefreshTokenReuseException;
 import com.davidrr.security.auth.exception.SuspiciousSessionException;
 import com.davidrr.security.auth.port.UserProvider;
+import com.davidrr.security.auth.port.UserRegistrationPort;
 import com.davidrr.security.auth.service.AuthService;
 import com.davidrr.security.auth.session.model.RefreshSession;
 import com.davidrr.security.auth.session.service.RefreshTokenService;
@@ -21,12 +19,14 @@ import com.davidrr.security.ratelimit.config.RateLimitProperties;
 import com.davidrr.security.ratelimit.service.RateLimiterService;
 import com.davidrr.security.ratelimit.util.RateLimitKeyFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +45,55 @@ public class AuthServiceImpl implements AuthService {
     private final RateLimitKeyFactory rateLimitKeyFactory;
 
     private final SecurityAuditService securityAuditService;
+
+    private final UserRegistrationPort userRegistrationPort;
+    private final ApplicationEventPublisher eventPublisher;
+    private final PasswordEncoder passwordEncoder;
+
+    @Override
+    @Transactional
+    public AuthTokens register(RegisterRequest request, SessionFingerprint fingerprint) {
+
+        // Registrar usuario (delegado al dominio/app)
+        UserRegistrationPort.RegisteredUser registeredUser =
+                userRegistrationPort.register(
+                        request.getUsername(),
+                        passwordEncoder.encode(request.getPassword())
+                );
+
+        // Publicar evento
+        eventPublisher.publishEvent(
+                new UserRegisteredEvent(
+                        registeredUser.id(),
+                        registeredUser.username()
+                )
+        );
+
+        // Cargar usuario para generar tokens
+        UserDetails userDetails = userProvider.loadUserByUsername(registeredUser.username());
+
+        String accessToken = jwtService.generateToken(userDetails);
+
+        String refreshToken = refreshTokenService.createRefreshToken(
+                userDetails.getUsername(),
+                fingerprint
+        );
+
+        // Auditoría
+        securityAuditService.log(
+                SecurityEventType.REGISTER_SUCCESS,
+                SecurityAuditContext.of(
+                        userDetails.getUsername(),
+                        fingerprint.ip(),
+                        fingerprint.userAgent(),
+                        null,
+                        null,
+                        "User registered successfully"
+                )
+        );
+
+        return new AuthTokens(accessToken, refreshToken);
+    }
 
     @Override
     @Transactional
