@@ -58,6 +58,7 @@ public class AuthServiceImpl implements AuthService {
         UserRegistrationPort.RegisteredUser registeredUser =
                 userRegistrationPort.register(
                         request.getUsername(),
+                        request.getEmail(),
                         passwordEncoder.encode(request.getPassword())
                 );
 
