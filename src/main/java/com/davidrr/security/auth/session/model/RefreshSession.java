@@ -27,4 +27,16 @@ public class RefreshSession {
 
     private String ip;
     private String userAgent;
+
+    @Override
+    public String toString() {
+        return "RefreshSession[REDACTED]";
+    }
+
+    public static class RefreshSessionBuilder {
+        @Override
+        public String toString() {
+            return "RefreshSession.RefreshSessionBuilder[REDACTED]";
+        }
+    }
 }
