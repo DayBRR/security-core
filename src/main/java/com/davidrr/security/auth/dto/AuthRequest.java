@@ -15,4 +15,9 @@ public class AuthRequest {
     @NotBlank
     private String password;
 
+    @Override
+    public String toString() {
+        return "AuthRequest[REDACTED]";
+    }
+
 }
