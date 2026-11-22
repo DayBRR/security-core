@@ -98,6 +98,8 @@ try {
     if (-not (Test-Path -LiteralPath $manifest -PathType Leaf)) { throw 'Missing original reference manifest' }
     $additions = Join-Path $root 'src/test/resources/compat/sec001-03-approved-api-additions.txt'
     if (-not (Test-Path -LiteralPath $additions -PathType Leaf)) { throw 'Missing reviewed additions inventory' }
+    $bearerAdditions = Join-Path $root 'src/test/resources/compat/sec001-03b-approved-api-additions.txt'
+    if (-not (Test-Path -LiteralPath $bearerAdditions -PathType Leaf)) { throw 'Missing reviewed bearer additions inventory' }
     $run = Join-Path $target ('sec001-02a-' + [Guid]::NewGuid().ToString('N'))
     $verifier = Join-Path $run 'verifier'
     $legacy = Join-Path $run 'legacy'
@@ -107,7 +109,7 @@ try {
         (Join-Path $root 'src/test/java/com/davidrr/security/compat/PublicApiContractTest.java')) | Out-Null
     $phase = 'API/ABI comparison'
     $api = Invoke-Checked $java @('-cp', ($verifier + [IO.Path]::PathSeparator + $external),
-        'com.davidrr.security.compat.PublicApiContractTest', 'verify', $baseline, $candidate, $external, $manifest, $additions)
+        'com.davidrr.security.compat.PublicApiContractTest', 'verify', $baseline, $candidate, $external, $manifest, $additions, $bearerAdditions)
     $phase = 'legacy compilation against original'
     Invoke-Checked $javac @('--release', '17', '-proc:none', '-classpath', ($baseline + [IO.Path]::PathSeparator + $external),
         '-d', $legacy, (Join-Path $root 'src/test/compat/LegacyPublicApiConsumer.java'),
