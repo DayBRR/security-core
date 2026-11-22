@@ -1,0 +1,258 @@
+# SEC-001-03A reviewed public/protected API additions; JDK 17
+# Baseline SHA-256 8d42c42359160d48dd79b6d1f5b042dd8a7b3d9e37ac5a1ab6ed3a2d9f3f4e22
+# Explicit N.4/N.8 declarations, including Java record and enum members; no candidate snapshot input.
+com.davidrr.security.account.AccountSecurityGate | CLASS modifiers=17
+com.davidrr.security.account.AccountSecurityGate | CTOR (Lcom/davidrr/security/account/AccountSecurityPort;Lcom/davidrr/security/account/AccountSecurityPolicy;)V modifiers=1
+com.davidrr.security.account.AccountSecurityGate | JAVAP public com.davidrr.security.account.AccountSecurityGate(com.davidrr.security.account.AccountSecurityPort, com.davidrr.security.account.AccountSecurityPolicy); | descriptor: (Lcom/davidrr/security/account/AccountSecurityPort;Lcom/davidrr/security/account/AccountSecurityPolicy;)V
+com.davidrr.security.account.AccountSecurityGate | JAVAP public com.davidrr.security.account.AccountSecuritySnapshot requireForAccess(com.davidrr.security.account.TokenAccountClaims); | descriptor: (Lcom/davidrr/security/account/TokenAccountClaims;)Lcom/davidrr/security/account/AccountSecuritySnapshot;
+com.davidrr.security.account.AccountSecurityGate | JAVAP public final class com.davidrr.security.account.AccountSecurityGate
+com.davidrr.security.account.AccountSecurityGate | JAVAP public java.lang.String securityContextId(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.AccountSecurityGate | METHOD requireForAccess (Lcom/davidrr/security/account/TokenAccountClaims;)Lcom/davidrr/security/account/AccountSecuritySnapshot; modifiers=1
+com.davidrr.security.account.AccountSecurityGate | METHOD securityContextId ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.AccountSecurityPolicy | CLASS modifiers=17
+com.davidrr.security.account.AccountSecurityPolicy | CTOR (Ljava/lang/String;Ljava/util/Set;Ljava/time/Duration;)V modifiers=1
+com.davidrr.security.account.AccountSecurityPolicy | JAVAP public com.davidrr.security.account.AccountSecurityPolicy(java.lang.String, java.util.Set<java.lang.String>, java.time.Duration); | descriptor: (Ljava/lang/String;Ljava/util/Set;Ljava/time/Duration;)V
+com.davidrr.security.account.AccountSecurityPolicy | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.account.AccountSecurityPolicy | JAVAP public final class com.davidrr.security.account.AccountSecurityPolicy extends java.lang.Record
+com.davidrr.security.account.AccountSecurityPolicy | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.account.AccountSecurityPolicy | JAVAP public java.lang.String securityContextId(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.AccountSecurityPolicy | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.AccountSecurityPolicy | JAVAP public java.time.Duration lookupTimeout(); | descriptor: ()Ljava/time/Duration;
+com.davidrr.security.account.AccountSecurityPolicy | JAVAP public java.util.Set<java.lang.String> acceptedNamespaces(); | descriptor: ()Ljava/util/Set;
+com.davidrr.security.account.AccountSecurityPolicy | METHOD acceptedNamespaces ()Ljava/util/Set; modifiers=1
+com.davidrr.security.account.AccountSecurityPolicy | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.account.AccountSecurityPolicy | METHOD hashCode ()I modifiers=17
+com.davidrr.security.account.AccountSecurityPolicy | METHOD lookupTimeout ()Ljava/time/Duration; modifiers=1
+com.davidrr.security.account.AccountSecurityPolicy | METHOD securityContextId ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.AccountSecurityPolicy | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.AccountSecurityPolicy | RECORD 0 securityContextId java.lang.String
+com.davidrr.security.account.AccountSecurityPolicy | RECORD 1 acceptedNamespaces java.util.Set<java.lang.String>
+com.davidrr.security.account.AccountSecurityPolicy | RECORD 2 lookupTimeout java.time.Duration
+com.davidrr.security.account.AccountSecurityPort | CLASS modifiers=1537
+com.davidrr.security.account.AccountSecurityPort | JAVAP public abstract java.util.Optional<com.davidrr.security.account.AccountSecuritySnapshot> readCurrent(com.davidrr.security.account.SecurityIdentity, java.time.Duration); | descriptor: (Lcom/davidrr/security/account/SecurityIdentity;Ljava/time/Duration;)Ljava/util/Optional;
+com.davidrr.security.account.AccountSecurityPort | JAVAP public interface com.davidrr.security.account.AccountSecurityPort
+com.davidrr.security.account.AccountSecurityPort | METHOD readCurrent (Lcom/davidrr/security/account/SecurityIdentity;Ljava/time/Duration;)Ljava/util/Optional; modifiers=1025
+com.davidrr.security.account.AccountSecuritySnapshot | CLASS modifiers=17
+com.davidrr.security.account.AccountSecuritySnapshot | CTOR (Lcom/davidrr/security/account/SecurityIdentity;Lcom/davidrr/security/account/AdmissionState;Lcom/davidrr/security/account/SecurityRevision;Ljava/lang/String;Ljava/util/Set;)V modifiers=1
+com.davidrr.security.account.AccountSecuritySnapshot | JAVAP public com.davidrr.security.account.AccountSecuritySnapshot(com.davidrr.security.account.SecurityIdentity, com.davidrr.security.account.AdmissionState, com.davidrr.security.account.SecurityRevision, java.lang.String, java.util.Set<java.lang.String>); | descriptor: (Lcom/davidrr/security/account/SecurityIdentity;Lcom/davidrr/security/account/AdmissionState;Lcom/davidrr/security/account/SecurityRevision;Ljava/lang/String;Ljava/util/Set;)V
+com.davidrr.security.account.AccountSecuritySnapshot | JAVAP public com.davidrr.security.account.AdmissionState admission(); | descriptor: ()Lcom/davidrr/security/account/AdmissionState;
+com.davidrr.security.account.AccountSecuritySnapshot | JAVAP public com.davidrr.security.account.SecurityIdentity identity(); | descriptor: ()Lcom/davidrr/security/account/SecurityIdentity;
+com.davidrr.security.account.AccountSecuritySnapshot | JAVAP public com.davidrr.security.account.SecurityRevision revision(); | descriptor: ()Lcom/davidrr/security/account/SecurityRevision;
+com.davidrr.security.account.AccountSecuritySnapshot | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.account.AccountSecuritySnapshot | JAVAP public final class com.davidrr.security.account.AccountSecuritySnapshot extends java.lang.Record
+com.davidrr.security.account.AccountSecuritySnapshot | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.account.AccountSecuritySnapshot | JAVAP public java.lang.String principalName(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.AccountSecuritySnapshot | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.AccountSecuritySnapshot | JAVAP public java.util.Set<java.lang.String> authorities(); | descriptor: ()Ljava/util/Set;
+com.davidrr.security.account.AccountSecuritySnapshot | METHOD admission ()Lcom/davidrr/security/account/AdmissionState; modifiers=1
+com.davidrr.security.account.AccountSecuritySnapshot | METHOD authorities ()Ljava/util/Set; modifiers=1
+com.davidrr.security.account.AccountSecuritySnapshot | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.account.AccountSecuritySnapshot | METHOD hashCode ()I modifiers=17
+com.davidrr.security.account.AccountSecuritySnapshot | METHOD identity ()Lcom/davidrr/security/account/SecurityIdentity; modifiers=1
+com.davidrr.security.account.AccountSecuritySnapshot | METHOD principalName ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.AccountSecuritySnapshot | METHOD revision ()Lcom/davidrr/security/account/SecurityRevision; modifiers=1
+com.davidrr.security.account.AccountSecuritySnapshot | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.AccountSecuritySnapshot | RECORD 0 identity com.davidrr.security.account.SecurityIdentity
+com.davidrr.security.account.AccountSecuritySnapshot | RECORD 1 admission com.davidrr.security.account.AdmissionState
+com.davidrr.security.account.AccountSecuritySnapshot | RECORD 2 revision com.davidrr.security.account.SecurityRevision
+com.davidrr.security.account.AccountSecuritySnapshot | RECORD 3 principalName java.lang.String
+com.davidrr.security.account.AccountSecuritySnapshot | RECORD 4 authorities java.util.Set<java.lang.String>
+com.davidrr.security.account.AdmissionState | CLASS modifiers=16401
+com.davidrr.security.account.AdmissionState | ENUM_ORDER [ADMITTED, NOT_ADMITTED]
+com.davidrr.security.account.AdmissionState | FIELD ADMITTED Lcom/davidrr/security/account/AdmissionState; modifiers=16409
+com.davidrr.security.account.AdmissionState | FIELD NOT_ADMITTED Lcom/davidrr/security/account/AdmissionState; modifiers=16409
+com.davidrr.security.account.AdmissionState | JAVAP public final class com.davidrr.security.account.AdmissionState extends java.lang.Enum<com.davidrr.security.account.AdmissionState>
+com.davidrr.security.account.AdmissionState | JAVAP public static com.davidrr.security.account.AdmissionState valueOf(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/account/AdmissionState;
+com.davidrr.security.account.AdmissionState | JAVAP public static com.davidrr.security.account.AdmissionState[] values(); | descriptor: ()[Lcom/davidrr/security/account/AdmissionState;
+com.davidrr.security.account.AdmissionState | JAVAP public static final com.davidrr.security.account.AdmissionState ADMITTED; | descriptor: Lcom/davidrr/security/account/AdmissionState;
+com.davidrr.security.account.AdmissionState | JAVAP public static final com.davidrr.security.account.AdmissionState NOT_ADMITTED; | descriptor: Lcom/davidrr/security/account/AdmissionState;
+com.davidrr.security.account.AdmissionState | METHOD valueOf (Ljava/lang/String;)Lcom/davidrr/security/account/AdmissionState; modifiers=9
+com.davidrr.security.account.AdmissionState | METHOD values ()[Lcom/davidrr/security/account/AdmissionState; modifiers=9
+com.davidrr.security.account.SecurityIdentity | CLASS modifiers=17
+com.davidrr.security.account.SecurityIdentity | CTOR (Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.account.SecurityIdentity | JAVAP public com.davidrr.security.account.SecurityIdentity(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.account.SecurityIdentity | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.account.SecurityIdentity | JAVAP public final class com.davidrr.security.account.SecurityIdentity extends java.lang.Record
+com.davidrr.security.account.SecurityIdentity | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.account.SecurityIdentity | JAVAP public java.lang.String namespace(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.SecurityIdentity | JAVAP public java.lang.String subjectId(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.SecurityIdentity | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.SecurityIdentity | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.account.SecurityIdentity | METHOD hashCode ()I modifiers=17
+com.davidrr.security.account.SecurityIdentity | METHOD namespace ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.SecurityIdentity | METHOD subjectId ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.SecurityIdentity | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.SecurityIdentity | RECORD 0 namespace java.lang.String
+com.davidrr.security.account.SecurityIdentity | RECORD 1 subjectId java.lang.String
+com.davidrr.security.account.SecurityRevision | CLASS modifiers=17
+com.davidrr.security.account.SecurityRevision | CTOR (Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.account.SecurityRevision | JAVAP public com.davidrr.security.account.SecurityRevision(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.account.SecurityRevision | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.account.SecurityRevision | JAVAP public final class com.davidrr.security.account.SecurityRevision extends java.lang.Record
+com.davidrr.security.account.SecurityRevision | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.account.SecurityRevision | JAVAP public java.lang.String scheme(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.SecurityRevision | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.SecurityRevision | JAVAP public java.lang.String value(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.SecurityRevision | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.account.SecurityRevision | METHOD hashCode ()I modifiers=17
+com.davidrr.security.account.SecurityRevision | METHOD scheme ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.SecurityRevision | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.SecurityRevision | METHOD value ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.SecurityRevision | RECORD 0 scheme java.lang.String
+com.davidrr.security.account.SecurityRevision | RECORD 1 value java.lang.String
+com.davidrr.security.account.SecurityValidationException | CLASS modifiers=17
+com.davidrr.security.account.SecurityValidationException | CTOR (Lcom/davidrr/security/account/SecurityValidationFailure;)V modifiers=1
+com.davidrr.security.account.SecurityValidationException | JAVAP public com.davidrr.security.account.SecurityValidationException(com.davidrr.security.account.SecurityValidationFailure); | descriptor: (Lcom/davidrr/security/account/SecurityValidationFailure;)V
+com.davidrr.security.account.SecurityValidationException | JAVAP public com.davidrr.security.account.SecurityValidationFailure failure(); | descriptor: ()Lcom/davidrr/security/account/SecurityValidationFailure;
+com.davidrr.security.account.SecurityValidationException | JAVAP public final class com.davidrr.security.account.SecurityValidationException extends java.lang.RuntimeException
+com.davidrr.security.account.SecurityValidationException | METHOD failure ()Lcom/davidrr/security/account/SecurityValidationFailure; modifiers=1
+com.davidrr.security.account.SecurityValidationFailure | CLASS modifiers=16401
+com.davidrr.security.account.SecurityValidationFailure | ENUM_ORDER [TOKEN_INVALID, IDENTITY_ABSENT, ACCOUNT_NOT_ADMITTED, REVISION_MISMATCH, DEPENDENCY_UNAVAILABLE, CONTRACT_VIOLATION]
+com.davidrr.security.account.SecurityValidationFailure | FIELD ACCOUNT_NOT_ADMITTED Lcom/davidrr/security/account/SecurityValidationFailure; modifiers=16409
+com.davidrr.security.account.SecurityValidationFailure | FIELD CONTRACT_VIOLATION Lcom/davidrr/security/account/SecurityValidationFailure; modifiers=16409
+com.davidrr.security.account.SecurityValidationFailure | FIELD DEPENDENCY_UNAVAILABLE Lcom/davidrr/security/account/SecurityValidationFailure; modifiers=16409
+com.davidrr.security.account.SecurityValidationFailure | FIELD IDENTITY_ABSENT Lcom/davidrr/security/account/SecurityValidationFailure; modifiers=16409
+com.davidrr.security.account.SecurityValidationFailure | FIELD REVISION_MISMATCH Lcom/davidrr/security/account/SecurityValidationFailure; modifiers=16409
+com.davidrr.security.account.SecurityValidationFailure | FIELD TOKEN_INVALID Lcom/davidrr/security/account/SecurityValidationFailure; modifiers=16409
+com.davidrr.security.account.SecurityValidationFailure | JAVAP public final class com.davidrr.security.account.SecurityValidationFailure extends java.lang.Enum<com.davidrr.security.account.SecurityValidationFailure>
+com.davidrr.security.account.SecurityValidationFailure | JAVAP public static com.davidrr.security.account.SecurityValidationFailure valueOf(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/account/SecurityValidationFailure;
+com.davidrr.security.account.SecurityValidationFailure | JAVAP public static com.davidrr.security.account.SecurityValidationFailure[] values(); | descriptor: ()[Lcom/davidrr/security/account/SecurityValidationFailure;
+com.davidrr.security.account.SecurityValidationFailure | JAVAP public static final com.davidrr.security.account.SecurityValidationFailure ACCOUNT_NOT_ADMITTED; | descriptor: Lcom/davidrr/security/account/SecurityValidationFailure;
+com.davidrr.security.account.SecurityValidationFailure | JAVAP public static final com.davidrr.security.account.SecurityValidationFailure CONTRACT_VIOLATION; | descriptor: Lcom/davidrr/security/account/SecurityValidationFailure;
+com.davidrr.security.account.SecurityValidationFailure | JAVAP public static final com.davidrr.security.account.SecurityValidationFailure DEPENDENCY_UNAVAILABLE; | descriptor: Lcom/davidrr/security/account/SecurityValidationFailure;
+com.davidrr.security.account.SecurityValidationFailure | JAVAP public static final com.davidrr.security.account.SecurityValidationFailure IDENTITY_ABSENT; | descriptor: Lcom/davidrr/security/account/SecurityValidationFailure;
+com.davidrr.security.account.SecurityValidationFailure | JAVAP public static final com.davidrr.security.account.SecurityValidationFailure REVISION_MISMATCH; | descriptor: Lcom/davidrr/security/account/SecurityValidationFailure;
+com.davidrr.security.account.SecurityValidationFailure | JAVAP public static final com.davidrr.security.account.SecurityValidationFailure TOKEN_INVALID; | descriptor: Lcom/davidrr/security/account/SecurityValidationFailure;
+com.davidrr.security.account.SecurityValidationFailure | METHOD valueOf (Ljava/lang/String;)Lcom/davidrr/security/account/SecurityValidationFailure; modifiers=9
+com.davidrr.security.account.SecurityValidationFailure | METHOD values ()[Lcom/davidrr/security/account/SecurityValidationFailure; modifiers=9
+com.davidrr.security.account.TokenAccountClaims | CLASS modifiers=17
+com.davidrr.security.account.TokenAccountClaims | CTOR (Lcom/davidrr/security/account/SecurityIdentity;Lcom/davidrr/security/account/SecurityRevision;)V modifiers=1
+com.davidrr.security.account.TokenAccountClaims | JAVAP public com.davidrr.security.account.SecurityIdentity identity(); | descriptor: ()Lcom/davidrr/security/account/SecurityIdentity;
+com.davidrr.security.account.TokenAccountClaims | JAVAP public com.davidrr.security.account.SecurityRevision revision(); | descriptor: ()Lcom/davidrr/security/account/SecurityRevision;
+com.davidrr.security.account.TokenAccountClaims | JAVAP public com.davidrr.security.account.TokenAccountClaims(com.davidrr.security.account.SecurityIdentity, com.davidrr.security.account.SecurityRevision); | descriptor: (Lcom/davidrr/security/account/SecurityIdentity;Lcom/davidrr/security/account/SecurityRevision;)V
+com.davidrr.security.account.TokenAccountClaims | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.account.TokenAccountClaims | JAVAP public final class com.davidrr.security.account.TokenAccountClaims extends java.lang.Record
+com.davidrr.security.account.TokenAccountClaims | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.account.TokenAccountClaims | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.account.TokenAccountClaims | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.account.TokenAccountClaims | METHOD hashCode ()I modifiers=17
+com.davidrr.security.account.TokenAccountClaims | METHOD identity ()Lcom/davidrr/security/account/SecurityIdentity; modifiers=1
+com.davidrr.security.account.TokenAccountClaims | METHOD revision ()Lcom/davidrr/security/account/SecurityRevision; modifiers=1
+com.davidrr.security.account.TokenAccountClaims | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.account.TokenAccountClaims | RECORD 0 identity com.davidrr.security.account.SecurityIdentity
+com.davidrr.security.account.TokenAccountClaims | RECORD 1 revision com.davidrr.security.account.SecurityRevision
+com.davidrr.security.jwt.authoritative.AuthoritativeAccessTokenVerifier | CLASS modifiers=17
+com.davidrr.security.jwt.authoritative.AuthoritativeAccessTokenVerifier | CTOR (Lcom/davidrr/security/jwt/authoritative/JwtCryptographicVerifier;Lcom/davidrr/security/jwt/authoritative/JwtClaimsCodec;Lcom/davidrr/security/account/AccountSecurityGate;Ljava/time/Clock;)V modifiers=1
+com.davidrr.security.jwt.authoritative.AuthoritativeAccessTokenVerifier | JAVAP public com.davidrr.security.jwt.authoritative.AuthoritativeAccessTokenVerifier(com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier, com.davidrr.security.jwt.authoritative.JwtClaimsCodec, com.davidrr.security.account.AccountSecurityGate, java.time.Clock); | descriptor: (Lcom/davidrr/security/jwt/authoritative/JwtCryptographicVerifier;Lcom/davidrr/security/jwt/authoritative/JwtClaimsCodec;Lcom/davidrr/security/account/AccountSecurityGate;Ljava/time/Clock;)V
+com.davidrr.security.jwt.authoritative.AuthoritativeAccessTokenVerifier | JAVAP public com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity verify(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/jwt/authoritative/VerifiedAccessIdentity;
+com.davidrr.security.jwt.authoritative.AuthoritativeAccessTokenVerifier | JAVAP public final class com.davidrr.security.jwt.authoritative.AuthoritativeAccessTokenVerifier
+com.davidrr.security.jwt.authoritative.AuthoritativeAccessTokenVerifier | METHOD verify (Ljava/lang/String;)Lcom/davidrr/security/jwt/authoritative/VerifiedAccessIdentity; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtClaimsCodec | CLASS modifiers=1537
+com.davidrr.security.jwt.authoritative.JwtClaimsCodec | JAVAP public abstract com.davidrr.security.account.TokenAccountClaims decode(com.davidrr.security.jwt.authoritative.VerifiedJwtClaims); | descriptor: (Lcom/davidrr/security/jwt/authoritative/VerifiedJwtClaims;)Lcom/davidrr/security/account/TokenAccountClaims;
+com.davidrr.security.jwt.authoritative.JwtClaimsCodec | JAVAP public abstract java.lang.String securityContextId(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.JwtClaimsCodec | JAVAP public interface com.davidrr.security.jwt.authoritative.JwtClaimsCodec
+com.davidrr.security.jwt.authoritative.JwtClaimsCodec | METHOD decode (Lcom/davidrr/security/jwt/authoritative/VerifiedJwtClaims;)Lcom/davidrr/security/account/TokenAccountClaims; modifiers=1025
+com.davidrr.security.jwt.authoritative.JwtClaimsCodec | METHOD securityContextId ()Ljava/lang/String; modifiers=1025
+com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier | CLASS modifiers=17
+com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier | CTOR (Lcom/davidrr/security/jwt/authoritative/JwtVerificationPolicy;Lcom/davidrr/security/jwt/authoritative/TrustedJwtKeySource;Ljava/time/Clock;)V modifiers=1
+com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier | JAVAP public com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier(com.davidrr.security.jwt.authoritative.JwtVerificationPolicy, com.davidrr.security.jwt.authoritative.TrustedJwtKeySource, java.time.Clock); | descriptor: (Lcom/davidrr/security/jwt/authoritative/JwtVerificationPolicy;Lcom/davidrr/security/jwt/authoritative/TrustedJwtKeySource;Ljava/time/Clock;)V
+com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier | JAVAP public com.davidrr.security.jwt.authoritative.VerifiedJwtClaims verify(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/jwt/authoritative/VerifiedJwtClaims;
+com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier | JAVAP public final class com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier
+com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier | JAVAP public java.lang.String securityContextId(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier | METHOD securityContextId ()Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtCryptographicVerifier | METHOD verify (Ljava/lang/String;)Lcom/davidrr/security/jwt/authoritative/VerifiedJwtClaims; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtReadLimits | CLASS modifiers=17
+com.davidrr.security.jwt.authoritative.JwtReadLimits | CTOR (IIIIIIII)V modifiers=1
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public com.davidrr.security.jwt.authoritative.JwtReadLimits(int, int, int, int, int, int, int, int); | descriptor: (IIIIIIII)V
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public final class com.davidrr.security.jwt.authoritative.JwtReadLimits extends java.lang.Record
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public final java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public int maxCompactBytes(); | descriptor: ()I
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public int maxDepth(); | descriptor: ()I
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public int maxHeaderBytes(); | descriptor: ()I
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public int maxJsonTokens(); | descriptor: ()I
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public int maxNameChars(); | descriptor: ()I
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public int maxNumberChars(); | descriptor: ()I
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public int maxPayloadBytes(); | descriptor: ()I
+com.davidrr.security.jwt.authoritative.JwtReadLimits | JAVAP public int maxStringChars(); | descriptor: ()I
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD hashCode ()I modifiers=17
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD maxCompactBytes ()I modifiers=1
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD maxDepth ()I modifiers=1
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD maxHeaderBytes ()I modifiers=1
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD maxJsonTokens ()I modifiers=1
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD maxNameChars ()I modifiers=1
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD maxNumberChars ()I modifiers=1
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD maxPayloadBytes ()I modifiers=1
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD maxStringChars ()I modifiers=1
+com.davidrr.security.jwt.authoritative.JwtReadLimits | METHOD toString ()Ljava/lang/String; modifiers=17
+com.davidrr.security.jwt.authoritative.JwtReadLimits | RECORD 0 maxCompactBytes int
+com.davidrr.security.jwt.authoritative.JwtReadLimits | RECORD 1 maxHeaderBytes int
+com.davidrr.security.jwt.authoritative.JwtReadLimits | RECORD 2 maxPayloadBytes int
+com.davidrr.security.jwt.authoritative.JwtReadLimits | RECORD 3 maxDepth int
+com.davidrr.security.jwt.authoritative.JwtReadLimits | RECORD 4 maxJsonTokens int
+com.davidrr.security.jwt.authoritative.JwtReadLimits | RECORD 5 maxNameChars int
+com.davidrr.security.jwt.authoritative.JwtReadLimits | RECORD 6 maxStringChars int
+com.davidrr.security.jwt.authoritative.JwtReadLimits | RECORD 7 maxNumberChars int
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | CLASS modifiers=17
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | CTOR (Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;Ljava/util/Set;Ljava/time/Duration;Ljava/time/Duration;Lcom/davidrr/security/jwt/authoritative/JwtReadLimits;)V modifiers=1
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public com.davidrr.security.jwt.authoritative.JwtReadLimits readLimits(); | descriptor: ()Lcom/davidrr/security/jwt/authoritative/JwtReadLimits;
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public com.davidrr.security.jwt.authoritative.JwtVerificationPolicy(java.lang.String, java.lang.String, java.util.Set<java.lang.String>, java.util.Set<java.lang.String>, java.time.Duration, java.time.Duration, com.davidrr.security.jwt.authoritative.JwtReadLimits); | descriptor: (Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;Ljava/util/Set;Ljava/time/Duration;Ljava/time/Duration;Lcom/davidrr/security/jwt/authoritative/JwtReadLimits;)V
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public final class com.davidrr.security.jwt.authoritative.JwtVerificationPolicy extends java.lang.Record
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public java.lang.String issuer(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public java.lang.String securityContextId(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public java.time.Duration clockSkew(); | descriptor: ()Ljava/time/Duration;
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public java.time.Duration maxTokenLifetime(); | descriptor: ()Ljava/time/Duration;
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public java.util.Set<java.lang.String> algorithms(); | descriptor: ()Ljava/util/Set;
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | JAVAP public java.util.Set<java.lang.String> audiences(); | descriptor: ()Ljava/util/Set;
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | METHOD algorithms ()Ljava/util/Set; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | METHOD audiences ()Ljava/util/Set; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | METHOD clockSkew ()Ljava/time/Duration; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | METHOD hashCode ()I modifiers=17
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | METHOD issuer ()Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | METHOD maxTokenLifetime ()Ljava/time/Duration; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | METHOD readLimits ()Lcom/davidrr/security/jwt/authoritative/JwtReadLimits; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | METHOD securityContextId ()Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | RECORD 0 securityContextId java.lang.String
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | RECORD 1 issuer java.lang.String
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | RECORD 2 audiences java.util.Set<java.lang.String>
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | RECORD 3 algorithms java.util.Set<java.lang.String>
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | RECORD 4 clockSkew java.time.Duration
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | RECORD 5 maxTokenLifetime java.time.Duration
+com.davidrr.security.jwt.authoritative.JwtVerificationPolicy | RECORD 6 readLimits com.davidrr.security.jwt.authoritative.JwtReadLimits
+com.davidrr.security.jwt.authoritative.StrictIdentityClaimsCodec | CLASS modifiers=17
+com.davidrr.security.jwt.authoritative.StrictIdentityClaimsCodec | CTOR (Ljava/lang/String;Ljava/util/Set;)V modifiers=1
+com.davidrr.security.jwt.authoritative.StrictIdentityClaimsCodec | JAVAP public com.davidrr.security.account.TokenAccountClaims decode(com.davidrr.security.jwt.authoritative.VerifiedJwtClaims); | descriptor: (Lcom/davidrr/security/jwt/authoritative/VerifiedJwtClaims;)Lcom/davidrr/security/account/TokenAccountClaims;
+com.davidrr.security.jwt.authoritative.StrictIdentityClaimsCodec | JAVAP public com.davidrr.security.jwt.authoritative.StrictIdentityClaimsCodec(java.lang.String, java.util.Set<java.lang.String>); | descriptor: (Ljava/lang/String;Ljava/util/Set;)V
+com.davidrr.security.jwt.authoritative.StrictIdentityClaimsCodec | JAVAP public final class com.davidrr.security.jwt.authoritative.StrictIdentityClaimsCodec implements com.davidrr.security.jwt.authoritative.JwtClaimsCodec
+com.davidrr.security.jwt.authoritative.StrictIdentityClaimsCodec | JAVAP public java.lang.String securityContextId(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.StrictIdentityClaimsCodec | METHOD decode (Lcom/davidrr/security/jwt/authoritative/VerifiedJwtClaims;)Lcom/davidrr/security/account/TokenAccountClaims; modifiers=1
+com.davidrr.security.jwt.authoritative.StrictIdentityClaimsCodec | METHOD securityContextId ()Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.authoritative.TrustedJwtKeySource | CLASS modifiers=1537
+com.davidrr.security.jwt.authoritative.TrustedJwtKeySource | JAVAP public abstract java.security.Key verificationKey(java.util.Optional<java.lang.String>, java.lang.String); | descriptor: (Ljava/util/Optional;Ljava/lang/String;)Ljava/security/Key;
+com.davidrr.security.jwt.authoritative.TrustedJwtKeySource | JAVAP public interface com.davidrr.security.jwt.authoritative.TrustedJwtKeySource
+com.davidrr.security.jwt.authoritative.TrustedJwtKeySource | METHOD verificationKey (Ljava/util/Optional;Ljava/lang/String;)Ljava/security/Key; modifiers=1025
+com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity | CLASS modifiers=17
+com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity | JAVAP public com.davidrr.security.account.AccountSecuritySnapshot snapshot(); | descriptor: ()Lcom/davidrr/security/account/AccountSecuritySnapshot;
+com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity | JAVAP public final class com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity
+com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity | JAVAP public java.lang.String securityContextId(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity | JAVAP public java.time.Instant tokenExpiresAt(); | descriptor: ()Ljava/time/Instant;
+com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity | METHOD securityContextId ()Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity | METHOD snapshot ()Lcom/davidrr/security/account/AccountSecuritySnapshot; modifiers=1
+com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.authoritative.VerifiedAccessIdentity | METHOD tokenExpiresAt ()Ljava/time/Instant; modifiers=1
+com.davidrr.security.jwt.authoritative.VerifiedJwtClaims | CLASS modifiers=17
+com.davidrr.security.jwt.authoritative.VerifiedJwtClaims | JAVAP public final class com.davidrr.security.jwt.authoritative.VerifiedJwtClaims
+com.davidrr.security.jwt.authoritative.VerifiedJwtClaims | JAVAP public java.lang.String securityContextId(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.VerifiedJwtClaims | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.jwt.authoritative.VerifiedJwtClaims | JAVAP public java.util.Map<java.lang.String, java.lang.Object> claims(); | descriptor: ()Ljava/util/Map;
+com.davidrr.security.jwt.authoritative.VerifiedJwtClaims | METHOD claims ()Ljava/util/Map; modifiers=1
+com.davidrr.security.jwt.authoritative.VerifiedJwtClaims | METHOD securityContextId ()Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.authoritative.VerifiedJwtClaims | METHOD toString ()Ljava/lang/String; modifiers=1

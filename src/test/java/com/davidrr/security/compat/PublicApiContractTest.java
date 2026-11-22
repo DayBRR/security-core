@@ -20,6 +20,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PublicApiContractTest {
     private static final String HASH = "8d42c42359160d48dd79b6d1f5b042dd8a7b3d9e37ac5a1ab6ed3a2d9f3f4e22";
     private static final String PREFIX = "com/davidrr/security/";
+    private static final Set<String> APPROVED_NEW_TYPES = Stream.concat(
+            Stream.of("SecurityIdentity", "SecurityRevision", "AdmissionState", "AccountSecuritySnapshot", "AccountSecurityPort",
+                    "AccountSecurityPolicy", "TokenAccountClaims", "SecurityValidationFailure", "SecurityValidationException", "AccountSecurityGate")
+                    .map(n -> "com.davidrr.security.account." + n),
+            Stream.of("JwtReadLimits", "JwtVerificationPolicy", "TrustedJwtKeySource", "VerifiedJwtClaims", "JwtClaimsCodec",
+                    "StrictIdentityClaimsCodec", "JwtCryptographicVerifier", "VerifiedAccessIdentity", "AuthoritativeAccessTokenVerifier")
+                    .map(n -> "com.davidrr.security.jwt.authoritative." + n)).collect(java.util.stream.Collectors.toUnmodifiableSet());
     private static final String IDENTIFIER = "\\p{javaJavaIdentifierStart}\\p{javaJavaIdentifierPart}*";
     private static final String TYPE_NAME = IDENTIFIER + "(?:\\." + IDENTIFIER + ")*";
     private static final java.util.regex.Pattern TYPE_HEADER = java.util.regex.Pattern.compile(
@@ -101,7 +108,12 @@ public class PublicApiContractTest {
             if (input == null) throw new AssertionError("Missing original API manifest");
             reference = new String(input.readAllBytes(), StandardCharsets.UTF_8);
         }
-        compare(reference, snapshot(candidate, externalClasspath()), "candidate");
+        String additions;
+        try (var input = getClass().getResourceAsStream("/compat/sec001-03-approved-api-additions.txt")) {
+            if (input == null) throw new AssertionError("Missing reviewed additions inventory");
+            additions = new String(input.readAllBytes(), StandardCharsets.UTF_8);
+        }
+        compareAdditive(reference, additions, snapshot(candidate, externalClasspath()), "candidate");
     }
 
     /** snapshot prints only a hash-pinned baseline; verify never rewrites expectations. */
@@ -111,16 +123,18 @@ public class PublicApiContractTest {
             verifyHash(Path.of(args[1]));
             System.out.print(snapshot(Path.of(args[1]), args[2]));
             verifyHash(Path.of(args[1]));
-        } else if (args.length == 5 && args[0].equals("verify")) {
+        } else if ((args.length == 5 || args.length == 6) && args[0].equals("verify")) {
             Path baseline = Path.of(args[1]);
             verifyHash(baseline);
             String expected = Files.readString(Path.of(args[4]), StandardCharsets.UTF_8);
             compare(expected, snapshot(baseline, args[3]), "original baseline");
-            compare(expected, snapshot(Path.of(args[2]), args[3]), "candidate");
+            String candidate = snapshot(Path.of(args[2]), args[3]);
+            if (args.length == 6) compareAdditive(expected, Files.readString(Path.of(args[5]), StandardCharsets.UTF_8), candidate, "candidate");
+            else compare(expected, candidate, "candidate");
             verifyHash(baseline);
-            System.out.println("API/ABI PASS: original hash verified; complete exported surface unchanged");
+            System.out.println("API/ABI PASS: original hash verified; legacy surface preserved; additions explicitly checked");
         } else {
-            throw new IllegalArgumentException("Expected snapshot baseline dependencies OR verify baseline candidate dependencies manifest");
+            throw new IllegalArgumentException("Expected snapshot baseline dependencies OR verify baseline candidate dependencies manifest [additions]");
         }
     }
 
@@ -303,6 +317,66 @@ public class PublicApiContractTest {
             added.removeAll(expected.lines().toList());
             throw new AssertionError("Exported API differs for " + label + "; missing/changed=" + missing + "; added/changed=" + added
                     + ". No unreviewed compatibility exceptions are allowed.");
+        }
+    }
+
+    private static SortedSet<String> declarations(String text) {
+        SortedSet<String> result = new TreeSet<>();
+        for (String line : text.replace("\r\n", "\n").lines().toList()) {
+            if (line.startsWith("#")) continue;
+            if (line.isBlank() || !line.equals(line.strip()) || !line.contains(" | ") || !result.add(line)) {
+                throw new AssertionError("Malformed or duplicate API inventory declaration");
+            }
+        }
+        return result;
+    }
+
+    private static void compareAdditive(String baseline, String additions, String candidate, String label) {
+        String header = "# SEC-001-03A reviewed public/protected API additions; JDK 17\n# Baseline SHA-256 " + HASH + "\n";
+        if (!additions.replace("\r\n", "\n").startsWith(header)) throw new AssertionError("Unreviewed additions header");
+        SortedSet<String> b = declarations(baseline), a = declarations(additions), c = declarations(candidate);
+        if (a.isEmpty() || !Collections.disjoint(a,b)) throw new AssertionError("Empty or overlapping additions");
+        Set<String> oldOwners = b.stream().map(line -> line.substring(0,line.indexOf(" | "))).collect(java.util.stream.Collectors.toSet());
+        for (String line : a) {
+            String owner = line.substring(0,line.indexOf(" | "));
+            if (!APPROVED_NEW_TYPES.contains(owner) || oldOwners.contains(owner)) throw new AssertionError("Addition outside approved new types");
+        }
+        SortedSet<String> missing = new TreeSet<>(b); missing.removeAll(c);
+        SortedSet<String> delta = new TreeSet<>(c); delta.removeAll(b);
+        if (!missing.isEmpty() || !delta.equals(a)) throw new AssertionError("API difference for " + label
+                + "; missing/changed=" + missing + "; unexpected/absent approved additions");
+    }
+
+    @Test
+    void additiveComparisonAllowsOnlyExactReviewedNewDeclarations() {
+        String old = "fixture.Legacy | CLASS modifiers=1\nfixture.Legacy | METHOD run ()V modifiers=1\n";
+        String added = "com.davidrr.security.account.SecurityIdentity | CLASS modifiers=17\n";
+        String header = "# SEC-001-03A reviewed public/protected API additions; JDK 17\n# Baseline SHA-256 " + HASH + "\n";
+        assertDoesNotThrow(() -> compareAdditive(old,header+added,old+added,"fixture"));
+        assertThrows(AssertionError.class, () -> compareAdditive(old,header+added,old,"fixture"));
+        assertThrows(AssertionError.class, () -> compareAdditive(old,header,old,"fixture"));
+        assertThrows(AssertionError.class, () -> compareAdditive(old,header+added+added,old+added,"fixture"));
+        assertThrows(AssertionError.class, () -> compareAdditive(old,header+added+"fixture.Other | CLASS modifiers=1\n",old+added,"fixture"));
+        assertThrows(AssertionError.class, () -> compareAdditive(old,header+added+old,old+added,"fixture"));
+        assertThrows(AssertionError.class, () -> compareAdditive(old,header+added,old+added+"fixture.Other | CLASS modifiers=1\n","fixture"));
+        assertThrows(AssertionError.class, () -> compareAdditive(old,header+added,old.replace("run", "removed")+added,"fixture"));
+        assertThrows(AssertionError.class, () -> compareAdditive(old,header.replace(HASH,"bad")+added,old+added,"fixture"));
+        String memberOnLegacy = "fixture.Legacy | METHOD newMethod ()V modifiers=1\n";
+        assertThrows(AssertionError.class, () -> compareAdditive(old,header+memberOnLegacy,old+memberOnLegacy,"fixture"));
+    }
+
+    @Test
+    void additiveInventoryCannotHideChangedLegacyContracts() {
+        String header = "# SEC-001-03A reviewed public/protected API additions; JDK 17\n# Baseline SHA-256 " + HASH + "\n";
+        String added = "com.davidrr.security.account.SecurityIdentity | CLASS modifiers=17\n";
+        for (String declaration : List.of("CLASS modifiers=1", "METHOD protectedCall ()V modifiers=4", "RECORD 0 id java.lang.Long",
+                "ENUM_ORDER [FIRST, SECOND]", "JAVAP public class fixture.Legacy extends fixture.Base",
+                "JAVAP public java.util.List<java.lang.String> values(); | descriptor: ()Ljava/util/List;",
+                "JAVAP public static final java.lang.String CODE = \"ORIGINAL\"; | descriptor: Ljava/lang/String;")) {
+            String old = "fixture.Legacy | " + declaration + "\n";
+            String changed = "fixture.Legacy | " + declaration + " changed\n";
+            assertThrows(AssertionError.class, () -> compareAdditive(old,header+added,changed+added,"fixture"));
+            assertThrows(AssertionError.class, () -> compareAdditive(old,header+added+changed,changed+added,"fixture"));
         }
     }
 }
