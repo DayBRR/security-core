@@ -28,6 +28,10 @@ public class PublicApiContractTest {
                     "StrictIdentityClaimsCodec", "JwtCryptographicVerifier", "VerifiedAccessIdentity", "AuthoritativeAccessTokenVerifier")
                     .map(n -> "com.davidrr.security.jwt.authoritative." + n)).collect(java.util.stream.Collectors.toUnmodifiableSet());
     private static final String IDENTIFIER = "\\p{javaJavaIdentifierStart}\\p{javaJavaIdentifierPart}*";
+    private static final Set<String> APPROVED_BEARER_TYPES = Stream.of("MappedAccessPrincipal", "AccessPrincipalMapper",
+            "AccountAccessAuthenticationToken", "AccountAccessAuthenticationProvider", "AuthoritativeAuthenticationServiceException",
+            "AuthoritativeErrorCodes", "AccountAuthenticationFailureHandler", "AuthoritativeBearerFilter", "AuthoritativeBearerComposition")
+            .map(n -> "com.davidrr.security.spring.account." + n).collect(java.util.stream.Collectors.toUnmodifiableSet());
     private static final String TYPE_NAME = IDENTIFIER + "(?:\\." + IDENTIFIER + ")*";
     private static final java.util.regex.Pattern TYPE_HEADER = java.util.regex.Pattern.compile(
             "^(?:(?:public|protected|abstract|final|static|strictfp)\\s+)*"
@@ -113,7 +117,12 @@ public class PublicApiContractTest {
             if (input == null) throw new AssertionError("Missing reviewed additions inventory");
             additions = new String(input.readAllBytes(), StandardCharsets.UTF_8);
         }
-        compareAdditive(reference, additions, snapshot(candidate, externalClasspath()), "candidate");
+        String bearerAdditions;
+        try (var input = getClass().getResourceAsStream("/compat/sec001-03b-approved-api-additions.txt")) {
+            if (input == null) throw new AssertionError("Missing reviewed bearer additions inventory");
+            bearerAdditions = new String(input.readAllBytes(), StandardCharsets.UTF_8);
+        }
+        compareBearerAdditive(reference, additions, bearerAdditions, snapshot(candidate, externalClasspath()), "candidate");
     }
 
     /** snapshot prints only a hash-pinned baseline; verify never rewrites expectations. */
@@ -123,13 +132,15 @@ public class PublicApiContractTest {
             verifyHash(Path.of(args[1]));
             System.out.print(snapshot(Path.of(args[1]), args[2]));
             verifyHash(Path.of(args[1]));
-        } else if ((args.length == 5 || args.length == 6) && args[0].equals("verify")) {
+        } else if ((args.length == 5 || args.length == 6 || args.length == 7) && args[0].equals("verify")) {
             Path baseline = Path.of(args[1]);
             verifyHash(baseline);
             String expected = Files.readString(Path.of(args[4]), StandardCharsets.UTF_8);
             compare(expected, snapshot(baseline, args[3]), "original baseline");
             String candidate = snapshot(Path.of(args[2]), args[3]);
-            if (args.length == 6) compareAdditive(expected, Files.readString(Path.of(args[5]), StandardCharsets.UTF_8), candidate, "candidate");
+            if (args.length == 7) compareBearerAdditive(expected, Files.readString(Path.of(args[5]), StandardCharsets.UTF_8),
+                    Files.readString(Path.of(args[6]), StandardCharsets.UTF_8), candidate, "candidate");
+            else if (args.length == 6) compareAdditive(expected, Files.readString(Path.of(args[5]), StandardCharsets.UTF_8), candidate, "candidate");
             else compare(expected, candidate, "candidate");
             verifyHash(baseline);
             System.out.println("API/ABI PASS: original hash verified; legacy surface preserved; additions explicitly checked");
@@ -345,6 +356,41 @@ public class PublicApiContractTest {
         SortedSet<String> delta = new TreeSet<>(c); delta.removeAll(b);
         if (!missing.isEmpty() || !delta.equals(a)) throw new AssertionError("API difference for " + label
                 + "; missing/changed=" + missing + "; unexpected/absent approved additions");
+    }
+
+    private static void compareBearerAdditive(String baseline, String additions, String bearerAdditions, String candidate, String label) {
+        String header = "# SEC-001-03B reviewed public/protected API additions; JDK 17\n# Baseline SHA-256 " + HASH + "\n";
+        if (bearerAdditions == null || !bearerAdditions.replace("\r\n", "\n").startsWith(header)) throw new AssertionError("Unreviewed bearer header");
+        SortedSet<String> d = declarations(bearerAdditions);
+        if (d.isEmpty() || !Collections.disjoint(d, declarations(baseline)) || !Collections.disjoint(d, declarations(additions))) {
+            throw new AssertionError("Empty or overlapping bearer additions");
+        }
+        for (String line : d) {
+            String owner = line.substring(0,line.indexOf(" | "));
+            if (!APPROVED_BEARER_TYPES.contains(owner)) throw new AssertionError("Addition outside approved bearer types");
+        }
+        SortedSet<String> remainder = new TreeSet<>(declarations(candidate));
+        if (!remainder.containsAll(d)) throw new AssertionError("Missing bearer additions");
+        remainder.removeAll(d);
+        compareAdditive(baseline, additions, String.join("\n",remainder)+"\n", label);
+    }
+
+    @Test
+    void bearerInventoryIsSeparateExactAndCannotHideLegacyOrAccountChanges() {
+        String b="fixture.Legacy | CLASS modifiers=1\n";
+        String a="com.davidrr.security.account.SecurityIdentity | CLASS modifiers=17\n";
+        String d="com.davidrr.security.spring.account.AuthoritativeBearerFilter | CLASS modifiers=17\n";
+        String ah="# SEC-001-03A reviewed public/protected API additions; JDK 17\n# Baseline SHA-256 "+HASH+"\n";
+        String dh="# SEC-001-03B reviewed public/protected API additions; JDK 17\n# Baseline SHA-256 "+HASH+"\n";
+        assertDoesNotThrow(() -> compareBearerAdditive(b,ah+a,dh+d,b+a+d,"fixture"));
+        for (String bad : List.of("",dh,dh+d+d,dh+a,dh+b,dh+"fixture.Other | CLASS modifiers=1\n",dh.replace(HASH,"bad")+d)) {
+            assertThrows(AssertionError.class, () -> compareBearerAdditive(b,ah+a,bad,b+a+d,"fixture"));
+        }
+        assertThrows(AssertionError.class, () -> compareBearerAdditive(b,ah+a,null,b+a+d,"fixture"));
+        for (String candidate : List.of(b+a,b+d,a+d,b+a+d+"fixture.Extra | CLASS modifiers=1\n",b.replace("=1","=17")+a+d)) {
+            assertThrows(AssertionError.class, () -> compareBearerAdditive(b,ah+a,dh+d,candidate,"fixture"));
+        }
+        assertThrows(AssertionError.class, () -> compareAdditive(b,ah+a,b+a+d,"strict old form"));
     }
 
     @Test

@@ -1,0 +1,77 @@
+# SEC-001-03B reviewed public/protected API additions; JDK 17
+# Baseline SHA-256 8d42c42359160d48dd79b6d1f5b042dd8a7b3d9e37ac5a1ab6ed3a2d9f3f4e22
+# Each declaration checked against approved section 12.3, including generated record members and constant values.
+com.davidrr.security.spring.account.AccessPrincipalMapper | CLASS modifiers=1537
+com.davidrr.security.spring.account.AccessPrincipalMapper | JAVAP public abstract com.davidrr.security.spring.account.MappedAccessPrincipal map(com.davidrr.security.account.AccountSecuritySnapshot); | descriptor: (Lcom/davidrr/security/account/AccountSecuritySnapshot;)Lcom/davidrr/security/spring/account/MappedAccessPrincipal;
+com.davidrr.security.spring.account.AccessPrincipalMapper | JAVAP public interface com.davidrr.security.spring.account.AccessPrincipalMapper
+com.davidrr.security.spring.account.AccessPrincipalMapper | METHOD map (Lcom/davidrr/security/account/AccountSecuritySnapshot;)Lcom/davidrr/security/spring/account/MappedAccessPrincipal; modifiers=1025
+com.davidrr.security.spring.account.AccountAccessAuthenticationProvider | CLASS modifiers=17
+com.davidrr.security.spring.account.AccountAccessAuthenticationProvider | CTOR (Lcom/davidrr/security/jwt/authoritative/AuthoritativeAccessTokenVerifier;Lcom/davidrr/security/spring/account/AccessPrincipalMapper;Ljava/time/Clock;)V modifiers=1
+com.davidrr.security.spring.account.AccountAccessAuthenticationProvider | JAVAP public boolean supports(java.lang.Class<?>); | descriptor: (Ljava/lang/Class;)Z
+com.davidrr.security.spring.account.AccountAccessAuthenticationProvider | JAVAP public com.davidrr.security.spring.account.AccountAccessAuthenticationProvider(com.davidrr.security.jwt.authoritative.AuthoritativeAccessTokenVerifier, com.davidrr.security.spring.account.AccessPrincipalMapper, java.time.Clock); | descriptor: (Lcom/davidrr/security/jwt/authoritative/AuthoritativeAccessTokenVerifier;Lcom/davidrr/security/spring/account/AccessPrincipalMapper;Ljava/time/Clock;)V
+com.davidrr.security.spring.account.AccountAccessAuthenticationProvider | JAVAP public final class com.davidrr.security.spring.account.AccountAccessAuthenticationProvider implements org.springframework.security.authentication.AuthenticationProvider
+com.davidrr.security.spring.account.AccountAccessAuthenticationProvider | JAVAP public org.springframework.security.core.Authentication authenticate(org.springframework.security.core.Authentication); | descriptor: (Lorg/springframework/security/core/Authentication;)Lorg/springframework/security/core/Authentication;
+com.davidrr.security.spring.account.AccountAccessAuthenticationProvider | METHOD authenticate (Lorg/springframework/security/core/Authentication;)Lorg/springframework/security/core/Authentication; modifiers=1
+com.davidrr.security.spring.account.AccountAccessAuthenticationProvider | METHOD supports (Ljava/lang/Class;)Z modifiers=1
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | CLASS modifiers=17
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | CTOR (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | JAVAP public com.davidrr.security.spring.account.AccountAccessAuthenticationToken(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | JAVAP public final class com.davidrr.security.spring.account.AccountAccessAuthenticationToken extends org.springframework.security.authentication.AbstractAuthenticationToken
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | JAVAP public java.lang.Object getCredentials(); | descriptor: ()Ljava/lang/Object;
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | JAVAP public java.lang.Object getPrincipal(); | descriptor: ()Ljava/lang/Object;
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | JAVAP public void eraseCredentials(); | descriptor: ()V
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | JAVAP public void setAuthenticated(boolean); | descriptor: (Z)V
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | METHOD eraseCredentials ()V modifiers=1
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | METHOD getCredentials ()Ljava/lang/Object; modifiers=1
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | METHOD getPrincipal ()Ljava/lang/Object; modifiers=1
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | METHOD setAuthenticated (Z)V modifiers=1
+com.davidrr.security.spring.account.AccountAccessAuthenticationToken | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | CLASS modifiers=17
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | CTOR (Lcom/fasterxml/jackson/databind/ObjectMapper;Ljava/time/Clock;)V modifiers=1
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | JAVAP public com.davidrr.security.spring.account.AccountAuthenticationFailureHandler(com.fasterxml.jackson.databind.ObjectMapper, java.time.Clock); | descriptor: (Lcom/fasterxml/jackson/databind/ObjectMapper;Ljava/time/Clock;)V
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | JAVAP public final class com.davidrr.security.spring.account.AccountAuthenticationFailureHandler implements org.springframework.security.web.AuthenticationEntryPoint,org.springframework.security.web.access.AccessDeniedHandler
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | JAVAP public void commence(jakarta.servlet.http.HttpServletRequest, jakarta.servlet.http.HttpServletResponse, org.springframework.security.core.AuthenticationException) throws java.io.IOException; | descriptor: (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Lorg/springframework/security/core/AuthenticationException;)V
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | JAVAP public void handle(jakarta.servlet.http.HttpServletRequest, jakarta.servlet.http.HttpServletResponse, org.springframework.security.access.AccessDeniedException) throws java.io.IOException; | descriptor: (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Lorg/springframework/security/access/AccessDeniedException;)V
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | JAVAP public void write(jakarta.servlet.http.HttpServletRequest, jakarta.servlet.http.HttpServletResponse, org.springframework.security.core.AuthenticationException) throws java.io.IOException; | descriptor: (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Lorg/springframework/security/core/AuthenticationException;)V
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | JAVAP public void writeUnexpectedFailure(jakarta.servlet.http.HttpServletRequest, jakarta.servlet.http.HttpServletResponse) throws java.io.IOException; | descriptor: (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;)V
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | METHOD commence (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Lorg/springframework/security/core/AuthenticationException;)V modifiers=1
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | METHOD handle (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Lorg/springframework/security/access/AccessDeniedException;)V modifiers=1
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | METHOD write (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Lorg/springframework/security/core/AuthenticationException;)V modifiers=1
+com.davidrr.security.spring.account.AccountAuthenticationFailureHandler | METHOD writeUnexpectedFailure (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;)V modifiers=1
+com.davidrr.security.spring.account.AuthoritativeAuthenticationServiceException | CLASS modifiers=17
+com.davidrr.security.spring.account.AuthoritativeAuthenticationServiceException | CTOR ()V modifiers=1
+com.davidrr.security.spring.account.AuthoritativeAuthenticationServiceException | JAVAP public com.davidrr.security.spring.account.AuthoritativeAuthenticationServiceException(); | descriptor: ()V
+com.davidrr.security.spring.account.AuthoritativeAuthenticationServiceException | JAVAP public final class com.davidrr.security.spring.account.AuthoritativeAuthenticationServiceException extends org.springframework.security.authentication.AuthenticationServiceException
+com.davidrr.security.spring.account.AuthoritativeBearerComposition | CLASS modifiers=17
+com.davidrr.security.spring.account.AuthoritativeBearerComposition | JAVAP public final class com.davidrr.security.spring.account.AuthoritativeBearerComposition
+com.davidrr.security.spring.account.AuthoritativeBearerComposition | JAVAP public static void validate(org.springframework.security.web.SecurityFilterChain, java.util.Collection<? extends jakarta.servlet.Filter>); | descriptor: (Lorg/springframework/security/web/SecurityFilterChain;Ljava/util/Collection;)V
+com.davidrr.security.spring.account.AuthoritativeBearerComposition | METHOD validate (Lorg/springframework/security/web/SecurityFilterChain;Ljava/util/Collection;)V modifiers=9
+com.davidrr.security.spring.account.AuthoritativeBearerFilter | CLASS modifiers=17
+com.davidrr.security.spring.account.AuthoritativeBearerFilter | CTOR (Lcom/davidrr/security/spring/account/AccountAccessAuthenticationProvider;Lcom/davidrr/security/spring/account/AccountAuthenticationFailureHandler;Lorg/springframework/security/web/util/matcher/RequestMatcher;)V modifiers=1
+com.davidrr.security.spring.account.AuthoritativeBearerFilter | JAVAP public com.davidrr.security.spring.account.AuthoritativeBearerFilter(com.davidrr.security.spring.account.AccountAccessAuthenticationProvider, com.davidrr.security.spring.account.AccountAuthenticationFailureHandler, org.springframework.security.web.util.matcher.RequestMatcher); | descriptor: (Lcom/davidrr/security/spring/account/AccountAccessAuthenticationProvider;Lcom/davidrr/security/spring/account/AccountAuthenticationFailureHandler;Lorg/springframework/security/web/util/matcher/RequestMatcher;)V
+com.davidrr.security.spring.account.AuthoritativeBearerFilter | JAVAP public final class com.davidrr.security.spring.account.AuthoritativeBearerFilter extends org.springframework.web.filter.GenericFilterBean
+com.davidrr.security.spring.account.AuthoritativeBearerFilter | JAVAP public void doFilter(jakarta.servlet.ServletRequest, jakarta.servlet.ServletResponse, jakarta.servlet.FilterChain) throws java.io.IOException, jakarta.servlet.ServletException; | descriptor: (Ljakarta/servlet/ServletRequest;Ljakarta/servlet/ServletResponse;Ljakarta/servlet/FilterChain;)V
+com.davidrr.security.spring.account.AuthoritativeBearerFilter | METHOD doFilter (Ljakarta/servlet/ServletRequest;Ljakarta/servlet/ServletResponse;Ljakarta/servlet/FilterChain;)V modifiers=1
+com.davidrr.security.spring.account.AuthoritativeErrorCodes | CLASS modifiers=17
+com.davidrr.security.spring.account.AuthoritativeErrorCodes | FIELD SECURITY_DEPENDENCY_UNAVAILABLE Ljava/lang/String; modifiers=25
+com.davidrr.security.spring.account.AuthoritativeErrorCodes | FIELD SECURITY_INTERNAL_ERROR Ljava/lang/String; modifiers=25
+com.davidrr.security.spring.account.AuthoritativeErrorCodes | JAVAP public final class com.davidrr.security.spring.account.AuthoritativeErrorCodes
+com.davidrr.security.spring.account.AuthoritativeErrorCodes | JAVAP public static final java.lang.String SECURITY_DEPENDENCY_UNAVAILABLE = "SECURITY_DEPENDENCY_UNAVAILABLE"; | descriptor: Ljava/lang/String;
+com.davidrr.security.spring.account.AuthoritativeErrorCodes | JAVAP public static final java.lang.String SECURITY_INTERNAL_ERROR = "SECURITY_INTERNAL_ERROR"; | descriptor: Ljava/lang/String;
+com.davidrr.security.spring.account.MappedAccessPrincipal | CLASS modifiers=17
+com.davidrr.security.spring.account.MappedAccessPrincipal | CTOR (Lcom/davidrr/security/account/SecurityIdentity;Lorg/springframework/security/core/userdetails/UserDetails;)V modifiers=1
+com.davidrr.security.spring.account.MappedAccessPrincipal | JAVAP public com.davidrr.security.account.SecurityIdentity identity(); | descriptor: ()Lcom/davidrr/security/account/SecurityIdentity;
+com.davidrr.security.spring.account.MappedAccessPrincipal | JAVAP public com.davidrr.security.spring.account.MappedAccessPrincipal(com.davidrr.security.account.SecurityIdentity, org.springframework.security.core.userdetails.UserDetails); | descriptor: (Lcom/davidrr/security/account/SecurityIdentity;Lorg/springframework/security/core/userdetails/UserDetails;)V
+com.davidrr.security.spring.account.MappedAccessPrincipal | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.spring.account.MappedAccessPrincipal | JAVAP public final class com.davidrr.security.spring.account.MappedAccessPrincipal extends java.lang.Record
+com.davidrr.security.spring.account.MappedAccessPrincipal | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.spring.account.MappedAccessPrincipal | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.spring.account.MappedAccessPrincipal | JAVAP public org.springframework.security.core.userdetails.UserDetails principal(); | descriptor: ()Lorg/springframework/security/core/userdetails/UserDetails;
+com.davidrr.security.spring.account.MappedAccessPrincipal | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.spring.account.MappedAccessPrincipal | METHOD hashCode ()I modifiers=17
+com.davidrr.security.spring.account.MappedAccessPrincipal | METHOD identity ()Lcom/davidrr/security/account/SecurityIdentity; modifiers=1
+com.davidrr.security.spring.account.MappedAccessPrincipal | METHOD principal ()Lorg/springframework/security/core/userdetails/UserDetails; modifiers=1
+com.davidrr.security.spring.account.MappedAccessPrincipal | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.spring.account.MappedAccessPrincipal | RECORD 0 identity com.davidrr.security.account.SecurityIdentity
+com.davidrr.security.spring.account.MappedAccessPrincipal | RECORD 1 principal org.springframework.security.core.userdetails.UserDetails
