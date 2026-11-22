@@ -1,0 +1,736 @@
+# Security Core 0.4.0 original public/protected API; JDK 17
+# SHA-256 8d42c42359160d48dd79b6d1f5b042dd8a7b3d9e37ac5a1ab6ed3a2d9f3f4e22
+# Generated only from verified original JAR. Sorted declarations; no private members.
+com.davidrr.security.audit.SecurityAuditContext | CLASS modifiers=17
+com.davidrr.security.audit.SecurityAuditContext | CTOR (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public com.davidrr.security.audit.SecurityAuditContext(java.lang.String, java.lang.String, java.lang.String, java.lang.Long, java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public final class com.davidrr.security.audit.SecurityAuditContext extends java.lang.Record
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public final java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public java.lang.Long sessionId(); | descriptor: ()Ljava/lang/Long;
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public java.lang.String details(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public java.lang.String ip(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public java.lang.String reason(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public java.lang.String userAgent(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public java.lang.String username(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public static com.davidrr.security.audit.SecurityAuditContext minimal(java.lang.String, java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/davidrr/security/audit/SecurityAuditContext;
+com.davidrr.security.audit.SecurityAuditContext | JAVAP public static com.davidrr.security.audit.SecurityAuditContext of(java.lang.String, java.lang.String, java.lang.String, java.lang.Long, java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Lcom/davidrr/security/audit/SecurityAuditContext;
+com.davidrr.security.audit.SecurityAuditContext | METHOD details ()Ljava/lang/String; modifiers=1
+com.davidrr.security.audit.SecurityAuditContext | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.audit.SecurityAuditContext | METHOD hashCode ()I modifiers=17
+com.davidrr.security.audit.SecurityAuditContext | METHOD ip ()Ljava/lang/String; modifiers=1
+com.davidrr.security.audit.SecurityAuditContext | METHOD minimal (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/davidrr/security/audit/SecurityAuditContext; modifiers=9
+com.davidrr.security.audit.SecurityAuditContext | METHOD of (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Lcom/davidrr/security/audit/SecurityAuditContext; modifiers=9
+com.davidrr.security.audit.SecurityAuditContext | METHOD reason ()Ljava/lang/String; modifiers=1
+com.davidrr.security.audit.SecurityAuditContext | METHOD sessionId ()Ljava/lang/Long; modifiers=1
+com.davidrr.security.audit.SecurityAuditContext | METHOD toString ()Ljava/lang/String; modifiers=17
+com.davidrr.security.audit.SecurityAuditContext | METHOD userAgent ()Ljava/lang/String; modifiers=1
+com.davidrr.security.audit.SecurityAuditContext | METHOD username ()Ljava/lang/String; modifiers=1
+com.davidrr.security.audit.SecurityAuditContext | RECORD 0 username java.lang.String
+com.davidrr.security.audit.SecurityAuditContext | RECORD 1 ip java.lang.String
+com.davidrr.security.audit.SecurityAuditContext | RECORD 2 userAgent java.lang.String
+com.davidrr.security.audit.SecurityAuditContext | RECORD 3 sessionId java.lang.Long
+com.davidrr.security.audit.SecurityAuditContext | RECORD 4 reason java.lang.String
+com.davidrr.security.audit.SecurityAuditContext | RECORD 5 details java.lang.String
+com.davidrr.security.audit.SecurityAuditService | CLASS modifiers=1537
+com.davidrr.security.audit.SecurityAuditService | JAVAP public abstract void log(com.davidrr.security.audit.SecurityEventType, com.davidrr.security.audit.SecurityAuditContext); | descriptor: (Lcom/davidrr/security/audit/SecurityEventType;Lcom/davidrr/security/audit/SecurityAuditContext;)V
+com.davidrr.security.audit.SecurityAuditService | JAVAP public interface com.davidrr.security.audit.SecurityAuditService
+com.davidrr.security.audit.SecurityAuditService | METHOD log (Lcom/davidrr/security/audit/SecurityEventType;Lcom/davidrr/security/audit/SecurityAuditContext;)V modifiers=1025
+com.davidrr.security.audit.SecurityEventType | CLASS modifiers=16401
+com.davidrr.security.audit.SecurityEventType | ENUM_ORDER [LOGIN_SUCCESS, LOGIN_FAILURE, REFRESH_SUCCESS, REFRESH_FAILURE, REFRESH_REUSE_DETECTED, REFRESH_TOKEN_CREATED, REFRESH_TOKEN_ROTATED, REFRESH_TOKEN_EXPIRED, REFRESH_INVALID_TOKEN, SUSPICIOUS_SESSION_DETECTED, LOGOUT, LOGOUT_ALL, SESSIONS_LISTED, SESSION_REVOKE_DENIED, SESSION_REVOKED, RATE_LIMIT_EXCEEDED, REGISTER_SUCCESS]
+com.davidrr.security.audit.SecurityEventType | FIELD LOGIN_FAILURE Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD LOGIN_SUCCESS Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD LOGOUT Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD LOGOUT_ALL Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD RATE_LIMIT_EXCEEDED Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD REFRESH_FAILURE Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD REFRESH_INVALID_TOKEN Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD REFRESH_REUSE_DETECTED Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD REFRESH_SUCCESS Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD REFRESH_TOKEN_CREATED Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD REFRESH_TOKEN_EXPIRED Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD REFRESH_TOKEN_ROTATED Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD REGISTER_SUCCESS Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD SESSIONS_LISTED Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD SESSION_REVOKED Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD SESSION_REVOKE_DENIED Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | FIELD SUSPICIOUS_SESSION_DETECTED Lcom/davidrr/security/audit/SecurityEventType; modifiers=16409
+com.davidrr.security.audit.SecurityEventType | JAVAP public final class com.davidrr.security.audit.SecurityEventType extends java.lang.Enum<com.davidrr.security.audit.SecurityEventType>
+com.davidrr.security.audit.SecurityEventType | JAVAP public static com.davidrr.security.audit.SecurityEventType valueOf(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static com.davidrr.security.audit.SecurityEventType[] values(); | descriptor: ()[Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType LOGIN_FAILURE; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType LOGIN_SUCCESS; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType LOGOUT; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType LOGOUT_ALL; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType RATE_LIMIT_EXCEEDED; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType REFRESH_FAILURE; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType REFRESH_INVALID_TOKEN; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType REFRESH_REUSE_DETECTED; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType REFRESH_SUCCESS; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType REFRESH_TOKEN_CREATED; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType REFRESH_TOKEN_EXPIRED; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType REFRESH_TOKEN_ROTATED; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType REGISTER_SUCCESS; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType SESSIONS_LISTED; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType SESSION_REVOKED; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType SESSION_REVOKE_DENIED; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | JAVAP public static final com.davidrr.security.audit.SecurityEventType SUSPICIOUS_SESSION_DETECTED; | descriptor: Lcom/davidrr/security/audit/SecurityEventType;
+com.davidrr.security.audit.SecurityEventType | METHOD valueOf (Ljava/lang/String;)Lcom/davidrr/security/audit/SecurityEventType; modifiers=9
+com.davidrr.security.audit.SecurityEventType | METHOD values ()[Lcom/davidrr/security/audit/SecurityEventType; modifiers=9
+com.davidrr.security.audit.StructuredLoggingSecurityAuditService | CLASS modifiers=1
+com.davidrr.security.audit.StructuredLoggingSecurityAuditService | CTOR ()V modifiers=1
+com.davidrr.security.audit.StructuredLoggingSecurityAuditService | JAVAP public class com.davidrr.security.audit.StructuredLoggingSecurityAuditService implements com.davidrr.security.audit.SecurityAuditService
+com.davidrr.security.audit.StructuredLoggingSecurityAuditService | JAVAP public com.davidrr.security.audit.StructuredLoggingSecurityAuditService(); | descriptor: ()V
+com.davidrr.security.audit.StructuredLoggingSecurityAuditService | JAVAP public void log(com.davidrr.security.audit.SecurityEventType, com.davidrr.security.audit.SecurityAuditContext); | descriptor: (Lcom/davidrr/security/audit/SecurityEventType;Lcom/davidrr/security/audit/SecurityAuditContext;)V
+com.davidrr.security.audit.StructuredLoggingSecurityAuditService | METHOD log (Lcom/davidrr/security/audit/SecurityEventType;Lcom/davidrr/security/audit/SecurityAuditContext;)V modifiers=1
+com.davidrr.security.auth.dto.AuthRequest | CLASS modifiers=1
+com.davidrr.security.auth.dto.AuthRequest | CTOR ()V modifiers=1
+com.davidrr.security.auth.dto.AuthRequest | CTOR (Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.dto.AuthRequest | JAVAP protected boolean canEqual(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.dto.AuthRequest | JAVAP public boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.dto.AuthRequest | JAVAP public class com.davidrr.security.auth.dto.AuthRequest
+com.davidrr.security.auth.dto.AuthRequest | JAVAP public com.davidrr.security.auth.dto.AuthRequest(); | descriptor: ()V
+com.davidrr.security.auth.dto.AuthRequest | JAVAP public com.davidrr.security.auth.dto.AuthRequest(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.auth.dto.AuthRequest | JAVAP public int hashCode(); | descriptor: ()I
+com.davidrr.security.auth.dto.AuthRequest | JAVAP public java.lang.String getPassword(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.AuthRequest | JAVAP public java.lang.String getUsername(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.AuthRequest | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.AuthRequest | JAVAP public void setPassword(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.dto.AuthRequest | JAVAP public void setUsername(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.dto.AuthRequest | METHOD canEqual (Ljava/lang/Object;)Z modifiers=4
+com.davidrr.security.auth.dto.AuthRequest | METHOD equals (Ljava/lang/Object;)Z modifiers=1
+com.davidrr.security.auth.dto.AuthRequest | METHOD getPassword ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.AuthRequest | METHOD getUsername ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.AuthRequest | METHOD hashCode ()I modifiers=1
+com.davidrr.security.auth.dto.AuthRequest | METHOD setPassword (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.dto.AuthRequest | METHOD setUsername (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.dto.AuthRequest | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.AuthResponse | CLASS modifiers=1
+com.davidrr.security.auth.dto.AuthResponse | CTOR (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.dto.AuthResponse | JAVAP protected boolean canEqual(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.dto.AuthResponse | JAVAP public boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.dto.AuthResponse | JAVAP public class com.davidrr.security.auth.dto.AuthResponse
+com.davidrr.security.auth.dto.AuthResponse | JAVAP public com.davidrr.security.auth.dto.AuthResponse(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.dto.AuthResponse | JAVAP public int hashCode(); | descriptor: ()I
+com.davidrr.security.auth.dto.AuthResponse | JAVAP public java.lang.String getToken(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.AuthResponse | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.AuthResponse | METHOD canEqual (Ljava/lang/Object;)Z modifiers=4
+com.davidrr.security.auth.dto.AuthResponse | METHOD equals (Ljava/lang/Object;)Z modifiers=1
+com.davidrr.security.auth.dto.AuthResponse | METHOD getToken ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.AuthResponse | METHOD hashCode ()I modifiers=1
+com.davidrr.security.auth.dto.AuthResponse | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.AuthTokens | CLASS modifiers=17
+com.davidrr.security.auth.dto.AuthTokens | CTOR (Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.dto.AuthTokens | JAVAP public com.davidrr.security.auth.dto.AuthTokens(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.auth.dto.AuthTokens | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.dto.AuthTokens | JAVAP public final class com.davidrr.security.auth.dto.AuthTokens extends java.lang.Record
+com.davidrr.security.auth.dto.AuthTokens | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.auth.dto.AuthTokens | JAVAP public final java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.AuthTokens | JAVAP public java.lang.String accessToken(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.AuthTokens | JAVAP public java.lang.String refreshToken(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.AuthTokens | METHOD accessToken ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.AuthTokens | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.auth.dto.AuthTokens | METHOD hashCode ()I modifiers=17
+com.davidrr.security.auth.dto.AuthTokens | METHOD refreshToken ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.AuthTokens | METHOD toString ()Ljava/lang/String; modifiers=17
+com.davidrr.security.auth.dto.AuthTokens | RECORD 0 accessToken java.lang.String
+com.davidrr.security.auth.dto.AuthTokens | RECORD 1 refreshToken java.lang.String
+com.davidrr.security.auth.dto.RefreshRotationResult | CLASS modifiers=17
+com.davidrr.security.auth.dto.RefreshRotationResult | CTOR (Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.dto.RefreshRotationResult | JAVAP public com.davidrr.security.auth.dto.RefreshRotationResult(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.auth.dto.RefreshRotationResult | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.dto.RefreshRotationResult | JAVAP public final class com.davidrr.security.auth.dto.RefreshRotationResult extends java.lang.Record
+com.davidrr.security.auth.dto.RefreshRotationResult | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.auth.dto.RefreshRotationResult | JAVAP public final java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.RefreshRotationResult | JAVAP public java.lang.String refreshToken(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.RefreshRotationResult | JAVAP public java.lang.String username(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.RefreshRotationResult | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.auth.dto.RefreshRotationResult | METHOD hashCode ()I modifiers=17
+com.davidrr.security.auth.dto.RefreshRotationResult | METHOD refreshToken ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.RefreshRotationResult | METHOD toString ()Ljava/lang/String; modifiers=17
+com.davidrr.security.auth.dto.RefreshRotationResult | METHOD username ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.RefreshRotationResult | RECORD 0 username java.lang.String
+com.davidrr.security.auth.dto.RefreshRotationResult | RECORD 1 refreshToken java.lang.String
+com.davidrr.security.auth.dto.RegisterRequest | CLASS modifiers=1
+com.davidrr.security.auth.dto.RegisterRequest | CTOR ()V modifiers=1
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP protected boolean canEqual(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public class com.davidrr.security.auth.dto.RegisterRequest
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public com.davidrr.security.auth.dto.RegisterRequest(); | descriptor: ()V
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public int hashCode(); | descriptor: ()I
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public java.lang.String getEmail(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public java.lang.String getPassword(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public java.lang.String getUsername(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public void setEmail(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public void setPassword(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.dto.RegisterRequest | JAVAP public void setUsername(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.dto.RegisterRequest | METHOD canEqual (Ljava/lang/Object;)Z modifiers=4
+com.davidrr.security.auth.dto.RegisterRequest | METHOD equals (Ljava/lang/Object;)Z modifiers=1
+com.davidrr.security.auth.dto.RegisterRequest | METHOD getEmail ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.RegisterRequest | METHOD getPassword ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.RegisterRequest | METHOD getUsername ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.RegisterRequest | METHOD hashCode ()I modifiers=1
+com.davidrr.security.auth.dto.RegisterRequest | METHOD setEmail (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.dto.RegisterRequest | METHOD setPassword (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.dto.RegisterRequest | METHOD setUsername (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.dto.RegisterRequest | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.SessionFingerprint | CLASS modifiers=17
+com.davidrr.security.auth.dto.SessionFingerprint | CTOR (Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.dto.SessionFingerprint | JAVAP public com.davidrr.security.auth.dto.SessionFingerprint(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.auth.dto.SessionFingerprint | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.dto.SessionFingerprint | JAVAP public final class com.davidrr.security.auth.dto.SessionFingerprint extends java.lang.Record
+com.davidrr.security.auth.dto.SessionFingerprint | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.auth.dto.SessionFingerprint | JAVAP public final java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.SessionFingerprint | JAVAP public java.lang.String ip(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.SessionFingerprint | JAVAP public java.lang.String userAgent(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.SessionFingerprint | JAVAP public static com.davidrr.security.auth.dto.SessionFingerprint from(jakarta.servlet.http.HttpServletRequest); | descriptor: (Ljakarta/servlet/http/HttpServletRequest;)Lcom/davidrr/security/auth/dto/SessionFingerprint;
+com.davidrr.security.auth.dto.SessionFingerprint | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.auth.dto.SessionFingerprint | METHOD from (Ljakarta/servlet/http/HttpServletRequest;)Lcom/davidrr/security/auth/dto/SessionFingerprint; modifiers=9
+com.davidrr.security.auth.dto.SessionFingerprint | METHOD hashCode ()I modifiers=17
+com.davidrr.security.auth.dto.SessionFingerprint | METHOD ip ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.SessionFingerprint | METHOD toString ()Ljava/lang/String; modifiers=17
+com.davidrr.security.auth.dto.SessionFingerprint | METHOD userAgent ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.SessionFingerprint | RECORD 0 ip java.lang.String
+com.davidrr.security.auth.dto.SessionFingerprint | RECORD 1 userAgent java.lang.String
+com.davidrr.security.auth.dto.SessionResponse | CLASS modifiers=17
+com.davidrr.security.auth.dto.SessionResponse | CTOR (Ljava/lang/Long;Ljava/time/Instant;Ljava/time/Instant;Ljava/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V modifiers=1
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public boolean current(); | descriptor: ()Z
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public com.davidrr.security.auth.dto.SessionResponse(java.lang.Long, java.time.Instant, java.time.Instant, java.time.Instant, java.lang.String, java.lang.String, java.lang.String, boolean); | descriptor: (Ljava/lang/Long;Ljava/time/Instant;Ljava/time/Instant;Ljava/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public final class com.davidrr.security.auth.dto.SessionResponse extends java.lang.Record
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public final java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public java.lang.Long id(); | descriptor: ()Ljava/lang/Long;
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public java.lang.String device(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public java.lang.String ip(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public java.lang.String userAgent(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public java.time.Instant createdAt(); | descriptor: ()Ljava/time/Instant;
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public java.time.Instant expiresAt(); | descriptor: ()Ljava/time/Instant;
+com.davidrr.security.auth.dto.SessionResponse | JAVAP public java.time.Instant lastUsedAt(); | descriptor: ()Ljava/time/Instant;
+com.davidrr.security.auth.dto.SessionResponse | METHOD createdAt ()Ljava/time/Instant; modifiers=1
+com.davidrr.security.auth.dto.SessionResponse | METHOD current ()Z modifiers=1
+com.davidrr.security.auth.dto.SessionResponse | METHOD device ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.SessionResponse | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.auth.dto.SessionResponse | METHOD expiresAt ()Ljava/time/Instant; modifiers=1
+com.davidrr.security.auth.dto.SessionResponse | METHOD hashCode ()I modifiers=17
+com.davidrr.security.auth.dto.SessionResponse | METHOD id ()Ljava/lang/Long; modifiers=1
+com.davidrr.security.auth.dto.SessionResponse | METHOD ip ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.SessionResponse | METHOD lastUsedAt ()Ljava/time/Instant; modifiers=1
+com.davidrr.security.auth.dto.SessionResponse | METHOD toString ()Ljava/lang/String; modifiers=17
+com.davidrr.security.auth.dto.SessionResponse | METHOD userAgent ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.dto.SessionResponse | RECORD 0 id java.lang.Long
+com.davidrr.security.auth.dto.SessionResponse | RECORD 1 createdAt java.time.Instant
+com.davidrr.security.auth.dto.SessionResponse | RECORD 2 lastUsedAt java.time.Instant
+com.davidrr.security.auth.dto.SessionResponse | RECORD 3 expiresAt java.time.Instant
+com.davidrr.security.auth.dto.SessionResponse | RECORD 4 ip java.lang.String
+com.davidrr.security.auth.dto.SessionResponse | RECORD 5 userAgent java.lang.String
+com.davidrr.security.auth.dto.SessionResponse | RECORD 6 device java.lang.String
+com.davidrr.security.auth.dto.SessionResponse | RECORD 7 current boolean
+com.davidrr.security.auth.event.UserRegisteredEvent | CLASS modifiers=17
+com.davidrr.security.auth.event.UserRegisteredEvent | CTOR (Ljava/lang/Long;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.event.UserRegisteredEvent | JAVAP public com.davidrr.security.auth.event.UserRegisteredEvent(java.lang.Long, java.lang.String); | descriptor: (Ljava/lang/Long;Ljava/lang/String;)V
+com.davidrr.security.auth.event.UserRegisteredEvent | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.event.UserRegisteredEvent | JAVAP public final class com.davidrr.security.auth.event.UserRegisteredEvent extends java.lang.Record
+com.davidrr.security.auth.event.UserRegisteredEvent | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.auth.event.UserRegisteredEvent | JAVAP public final java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.event.UserRegisteredEvent | JAVAP public java.lang.Long userId(); | descriptor: ()Ljava/lang/Long;
+com.davidrr.security.auth.event.UserRegisteredEvent | JAVAP public java.lang.String username(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.event.UserRegisteredEvent | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.auth.event.UserRegisteredEvent | METHOD hashCode ()I modifiers=17
+com.davidrr.security.auth.event.UserRegisteredEvent | METHOD toString ()Ljava/lang/String; modifiers=17
+com.davidrr.security.auth.event.UserRegisteredEvent | METHOD userId ()Ljava/lang/Long; modifiers=1
+com.davidrr.security.auth.event.UserRegisteredEvent | METHOD username ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.event.UserRegisteredEvent | RECORD 0 userId java.lang.Long
+com.davidrr.security.auth.event.UserRegisteredEvent | RECORD 1 username java.lang.String
+com.davidrr.security.auth.exception.RefreshTokenExpiredException | CLASS modifiers=1
+com.davidrr.security.auth.exception.RefreshTokenExpiredException | CTOR ()V modifiers=1
+com.davidrr.security.auth.exception.RefreshTokenExpiredException | JAVAP public class com.davidrr.security.auth.exception.RefreshTokenExpiredException extends java.lang.RuntimeException
+com.davidrr.security.auth.exception.RefreshTokenExpiredException | JAVAP public com.davidrr.security.auth.exception.RefreshTokenExpiredException(); | descriptor: ()V
+com.davidrr.security.auth.exception.RefreshTokenInvalidException | CLASS modifiers=1
+com.davidrr.security.auth.exception.RefreshTokenInvalidException | CTOR ()V modifiers=1
+com.davidrr.security.auth.exception.RefreshTokenInvalidException | JAVAP public class com.davidrr.security.auth.exception.RefreshTokenInvalidException extends java.lang.RuntimeException
+com.davidrr.security.auth.exception.RefreshTokenInvalidException | JAVAP public com.davidrr.security.auth.exception.RefreshTokenInvalidException(); | descriptor: ()V
+com.davidrr.security.auth.exception.RefreshTokenMissingException | CLASS modifiers=1
+com.davidrr.security.auth.exception.RefreshTokenMissingException | CTOR ()V modifiers=1
+com.davidrr.security.auth.exception.RefreshTokenMissingException | JAVAP public class com.davidrr.security.auth.exception.RefreshTokenMissingException extends java.lang.RuntimeException
+com.davidrr.security.auth.exception.RefreshTokenMissingException | JAVAP public com.davidrr.security.auth.exception.RefreshTokenMissingException(); | descriptor: ()V
+com.davidrr.security.auth.exception.RefreshTokenReuseException | CLASS modifiers=1
+com.davidrr.security.auth.exception.RefreshTokenReuseException | CTOR ()V modifiers=1
+com.davidrr.security.auth.exception.RefreshTokenReuseException | JAVAP public class com.davidrr.security.auth.exception.RefreshTokenReuseException extends java.lang.RuntimeException
+com.davidrr.security.auth.exception.RefreshTokenReuseException | JAVAP public com.davidrr.security.auth.exception.RefreshTokenReuseException(); | descriptor: ()V
+com.davidrr.security.auth.exception.RefreshTokenRevokedException | CLASS modifiers=1
+com.davidrr.security.auth.exception.RefreshTokenRevokedException | CTOR ()V modifiers=1
+com.davidrr.security.auth.exception.RefreshTokenRevokedException | JAVAP public class com.davidrr.security.auth.exception.RefreshTokenRevokedException extends java.lang.RuntimeException
+com.davidrr.security.auth.exception.RefreshTokenRevokedException | JAVAP public com.davidrr.security.auth.exception.RefreshTokenRevokedException(); | descriptor: ()V
+com.davidrr.security.auth.exception.SessionNotFoundException | CLASS modifiers=1
+com.davidrr.security.auth.exception.SessionNotFoundException | CTOR ()V modifiers=1
+com.davidrr.security.auth.exception.SessionNotFoundException | JAVAP public class com.davidrr.security.auth.exception.SessionNotFoundException extends java.lang.RuntimeException
+com.davidrr.security.auth.exception.SessionNotFoundException | JAVAP public com.davidrr.security.auth.exception.SessionNotFoundException(); | descriptor: ()V
+com.davidrr.security.auth.exception.SuspiciousSessionException | CLASS modifiers=1
+com.davidrr.security.auth.exception.SuspiciousSessionException | CTOR ()V modifiers=1
+com.davidrr.security.auth.exception.SuspiciousSessionException | JAVAP public class com.davidrr.security.auth.exception.SuspiciousSessionException extends java.lang.RuntimeException
+com.davidrr.security.auth.exception.SuspiciousSessionException | JAVAP public com.davidrr.security.auth.exception.SuspiciousSessionException(); | descriptor: ()V
+com.davidrr.security.auth.port.UserLoginAuditPort | CLASS modifiers=1537
+com.davidrr.security.auth.port.UserLoginAuditPort | JAVAP public abstract void recordSuccessfulLogin(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.port.UserLoginAuditPort | JAVAP public interface com.davidrr.security.auth.port.UserLoginAuditPort
+com.davidrr.security.auth.port.UserLoginAuditPort | METHOD recordSuccessfulLogin (Ljava/lang/String;)V modifiers=1025
+com.davidrr.security.auth.port.UserProvider | CLASS modifiers=1537
+com.davidrr.security.auth.port.UserProvider | JAVAP public abstract org.springframework.security.core.userdetails.UserDetails loadUserByUsername(java.lang.String); | descriptor: (Ljava/lang/String;)Lorg/springframework/security/core/userdetails/UserDetails;
+com.davidrr.security.auth.port.UserProvider | JAVAP public interface com.davidrr.security.auth.port.UserProvider
+com.davidrr.security.auth.port.UserProvider | METHOD loadUserByUsername (Ljava/lang/String;)Lorg/springframework/security/core/userdetails/UserDetails; modifiers=1025
+com.davidrr.security.auth.port.UserRegistrationPort | CLASS modifiers=1537
+com.davidrr.security.auth.port.UserRegistrationPort | JAVAP public abstract com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser register(java.lang.String, java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/davidrr/security/auth/port/UserRegistrationPort$RegisteredUser;
+com.davidrr.security.auth.port.UserRegistrationPort | JAVAP public interface com.davidrr.security.auth.port.UserRegistrationPort
+com.davidrr.security.auth.port.UserRegistrationPort | METHOD register (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/davidrr/security/auth/port/UserRegistrationPort$RegisteredUser; modifiers=1025
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | CLASS modifiers=25
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | CTOR (Ljava/lang/Long;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | JAVAP public com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser(java.lang.Long, java.lang.String); | descriptor: (Ljava/lang/Long;Ljava/lang/String;)V
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | JAVAP public final class com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser extends java.lang.Record
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | JAVAP public final java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | JAVAP public java.lang.Long id(); | descriptor: ()Ljava/lang/Long;
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | JAVAP public java.lang.String username(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | METHOD hashCode ()I modifiers=17
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | METHOD id ()Ljava/lang/Long; modifiers=1
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | METHOD toString ()Ljava/lang/String; modifiers=17
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | METHOD username ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | RECORD 0 id java.lang.Long
+com.davidrr.security.auth.port.UserRegistrationPort$RegisteredUser | RECORD 1 username java.lang.String
+com.davidrr.security.auth.service.AuthService | CLASS modifiers=1537
+com.davidrr.security.auth.service.AuthService | JAVAP public abstract com.davidrr.security.auth.dto.AuthTokens login(com.davidrr.security.auth.dto.AuthRequest, com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Lcom/davidrr/security/auth/dto/AuthRequest;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens;
+com.davidrr.security.auth.service.AuthService | JAVAP public abstract com.davidrr.security.auth.dto.AuthTokens refresh(java.lang.String, com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens;
+com.davidrr.security.auth.service.AuthService | JAVAP public abstract com.davidrr.security.auth.dto.AuthTokens register(com.davidrr.security.auth.dto.RegisterRequest, com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Lcom/davidrr/security/auth/dto/RegisterRequest;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens;
+com.davidrr.security.auth.service.AuthService | JAVAP public abstract java.util.List<com.davidrr.security.auth.dto.SessionResponse> getSessions(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/util/List;
+com.davidrr.security.auth.service.AuthService | JAVAP public abstract void logout(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.service.AuthService | JAVAP public abstract void logoutAll(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.service.AuthService | JAVAP public abstract void revokeSession(java.lang.String, java.lang.Long); | descriptor: (Ljava/lang/String;Ljava/lang/Long;)V
+com.davidrr.security.auth.service.AuthService | JAVAP public interface com.davidrr.security.auth.service.AuthService
+com.davidrr.security.auth.service.AuthService | METHOD getSessions (Ljava/lang/String;)Ljava/util/List; modifiers=1025
+com.davidrr.security.auth.service.AuthService | METHOD login (Lcom/davidrr/security/auth/dto/AuthRequest;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens; modifiers=1025
+com.davidrr.security.auth.service.AuthService | METHOD logout (Ljava/lang/String;)V modifiers=1025
+com.davidrr.security.auth.service.AuthService | METHOD logoutAll (Ljava/lang/String;)V modifiers=1025
+com.davidrr.security.auth.service.AuthService | METHOD refresh (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens; modifiers=1025
+com.davidrr.security.auth.service.AuthService | METHOD register (Lcom/davidrr/security/auth/dto/RegisterRequest;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens; modifiers=1025
+com.davidrr.security.auth.service.AuthService | METHOD revokeSession (Ljava/lang/String;Ljava/lang/Long;)V modifiers=1025
+com.davidrr.security.auth.service.impl.AuthServiceImpl | CLASS modifiers=1
+com.davidrr.security.auth.service.impl.AuthServiceImpl | CTOR (Lorg/springframework/security/authentication/AuthenticationManager;Lcom/davidrr/security/jwt/JwtService;Lcom/davidrr/security/auth/session/service/RefreshTokenService;Lcom/davidrr/security/auth/port/UserProvider;Lcom/davidrr/security/ratelimit/service/RateLimiterService;Lcom/davidrr/security/ratelimit/util/RateLimitKeyFactory;Lcom/davidrr/security/audit/SecurityAuditService;Lcom/davidrr/security/auth/port/UserRegistrationPort;Lorg/springframework/context/ApplicationEventPublisher;Lorg/springframework/security/crypto/password/PasswordEncoder;Lcom/davidrr/security/auth/port/UserLoginAuditPort;)V modifiers=1
+com.davidrr.security.auth.service.impl.AuthServiceImpl | JAVAP public class com.davidrr.security.auth.service.impl.AuthServiceImpl implements com.davidrr.security.auth.service.AuthService
+com.davidrr.security.auth.service.impl.AuthServiceImpl | JAVAP public com.davidrr.security.auth.dto.AuthTokens login(com.davidrr.security.auth.dto.AuthRequest, com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Lcom/davidrr/security/auth/dto/AuthRequest;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens;
+com.davidrr.security.auth.service.impl.AuthServiceImpl | JAVAP public com.davidrr.security.auth.dto.AuthTokens refresh(java.lang.String, com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens;
+com.davidrr.security.auth.service.impl.AuthServiceImpl | JAVAP public com.davidrr.security.auth.dto.AuthTokens register(com.davidrr.security.auth.dto.RegisterRequest, com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Lcom/davidrr/security/auth/dto/RegisterRequest;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens;
+com.davidrr.security.auth.service.impl.AuthServiceImpl | JAVAP public com.davidrr.security.auth.service.impl.AuthServiceImpl(org.springframework.security.authentication.AuthenticationManager, com.davidrr.security.jwt.JwtService, com.davidrr.security.auth.session.service.RefreshTokenService, com.davidrr.security.auth.port.UserProvider, com.davidrr.security.ratelimit.service.RateLimiterService, com.davidrr.security.ratelimit.util.RateLimitKeyFactory, com.davidrr.security.audit.SecurityAuditService, com.davidrr.security.auth.port.UserRegistrationPort, org.springframework.context.ApplicationEventPublisher, org.springframework.security.crypto.password.PasswordEncoder, com.davidrr.security.auth.port.UserLoginAuditPort); | descriptor: (Lorg/springframework/security/authentication/AuthenticationManager;Lcom/davidrr/security/jwt/JwtService;Lcom/davidrr/security/auth/session/service/RefreshTokenService;Lcom/davidrr/security/auth/port/UserProvider;Lcom/davidrr/security/ratelimit/service/RateLimiterService;Lcom/davidrr/security/ratelimit/util/RateLimitKeyFactory;Lcom/davidrr/security/audit/SecurityAuditService;Lcom/davidrr/security/auth/port/UserRegistrationPort;Lorg/springframework/context/ApplicationEventPublisher;Lorg/springframework/security/crypto/password/PasswordEncoder;Lcom/davidrr/security/auth/port/UserLoginAuditPort;)V
+com.davidrr.security.auth.service.impl.AuthServiceImpl | JAVAP public java.util.List<com.davidrr.security.auth.dto.SessionResponse> getSessions(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/util/List;
+com.davidrr.security.auth.service.impl.AuthServiceImpl | JAVAP public void logout(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.service.impl.AuthServiceImpl | JAVAP public void logoutAll(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.service.impl.AuthServiceImpl | JAVAP public void revokeSession(java.lang.String, java.lang.Long); | descriptor: (Ljava/lang/String;Ljava/lang/Long;)V
+com.davidrr.security.auth.service.impl.AuthServiceImpl | METHOD getSessions (Ljava/lang/String;)Ljava/util/List; modifiers=1
+com.davidrr.security.auth.service.impl.AuthServiceImpl | METHOD login (Lcom/davidrr/security/auth/dto/AuthRequest;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens; modifiers=1
+com.davidrr.security.auth.service.impl.AuthServiceImpl | METHOD logout (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.service.impl.AuthServiceImpl | METHOD logoutAll (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.service.impl.AuthServiceImpl | METHOD refresh (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens; modifiers=1
+com.davidrr.security.auth.service.impl.AuthServiceImpl | METHOD register (Lcom/davidrr/security/auth/dto/RegisterRequest;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/AuthTokens; modifiers=1
+com.davidrr.security.auth.service.impl.AuthServiceImpl | METHOD revokeSession (Ljava/lang/String;Ljava/lang/Long;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | CLASS modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP protected boolean canEqual(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public boolean isRevoked(); | descriptor: ()Z
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public class com.davidrr.security.auth.session.model.RefreshSession
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public int hashCode(); | descriptor: ()I
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.lang.Long getId(); | descriptor: ()Ljava/lang/Long;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.lang.String getIp(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.lang.String getReplacedByTokenHash(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.lang.String getRevocationReason(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.lang.String getTokenHash(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.lang.String getUserAgent(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.lang.String getUsername(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.time.Instant getCreatedAt(); | descriptor: ()Ljava/time/Instant;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.time.Instant getExpiresAt(); | descriptor: ()Ljava/time/Instant;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.time.Instant getLastUsedAt(); | descriptor: ()Ljava/time/Instant;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public java.time.Instant getRevokedAt(); | descriptor: ()Ljava/time/Instant;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public static com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder builder(); | descriptor: ()Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setCreatedAt(java.time.Instant); | descriptor: (Ljava/time/Instant;)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setExpiresAt(java.time.Instant); | descriptor: (Ljava/time/Instant;)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setId(java.lang.Long); | descriptor: (Ljava/lang/Long;)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setIp(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setLastUsedAt(java.time.Instant); | descriptor: (Ljava/time/Instant;)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setReplacedByTokenHash(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setRevocationReason(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setRevoked(boolean); | descriptor: (Z)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setRevokedAt(java.time.Instant); | descriptor: (Ljava/time/Instant;)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setTokenHash(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setUserAgent(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.session.model.RefreshSession | JAVAP public void setUsername(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.session.model.RefreshSession | METHOD builder ()Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=9
+com.davidrr.security.auth.session.model.RefreshSession | METHOD canEqual (Ljava/lang/Object;)Z modifiers=4
+com.davidrr.security.auth.session.model.RefreshSession | METHOD equals (Ljava/lang/Object;)Z modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getCreatedAt ()Ljava/time/Instant; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getExpiresAt ()Ljava/time/Instant; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getId ()Ljava/lang/Long; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getIp ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getLastUsedAt ()Ljava/time/Instant; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getReplacedByTokenHash ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getRevocationReason ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getRevokedAt ()Ljava/time/Instant; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getTokenHash ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getUserAgent ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD getUsername ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD hashCode ()I modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD isRevoked ()Z modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setCreatedAt (Ljava/time/Instant;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setExpiresAt (Ljava/time/Instant;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setId (Ljava/lang/Long;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setIp (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setLastUsedAt (Ljava/time/Instant;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setReplacedByTokenHash (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setRevocationReason (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setRevoked (Z)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setRevokedAt (Ljava/time/Instant;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setTokenHash (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setUserAgent (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD setUsername (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | CLASS modifiers=9
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public class com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession build(); | descriptor: ()Lcom/davidrr/security/auth/session/model/RefreshSession;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder createdAt(java.time.Instant); | descriptor: (Ljava/time/Instant;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder expiresAt(java.time.Instant); | descriptor: (Ljava/time/Instant;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder id(java.lang.Long); | descriptor: (Ljava/lang/Long;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder ip(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder lastUsedAt(java.time.Instant); | descriptor: (Ljava/time/Instant;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder replacedByTokenHash(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder revocationReason(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder revoked(boolean); | descriptor: (Z)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder revokedAt(java.time.Instant); | descriptor: (Ljava/time/Instant;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder tokenHash(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder userAgent(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder username(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD build ()Lcom/davidrr/security/auth/session/model/RefreshSession; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD createdAt (Ljava/time/Instant;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD expiresAt (Ljava/time/Instant;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD id (Ljava/lang/Long;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD ip (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD lastUsedAt (Ljava/time/Instant;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD replacedByTokenHash (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD revocationReason (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD revoked (Z)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD revokedAt (Ljava/time/Instant;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD tokenHash (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD userAgent (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.model.RefreshSession$RefreshSessionBuilder | METHOD username (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession$RefreshSessionBuilder; modifiers=1
+com.davidrr.security.auth.session.port.RefreshSessionStore | CLASS modifiers=1537
+com.davidrr.security.auth.session.port.RefreshSessionStore | JAVAP public abstract com.davidrr.security.auth.session.model.RefreshSession save(com.davidrr.security.auth.session.model.RefreshSession); | descriptor: (Lcom/davidrr/security/auth/session/model/RefreshSession;)Lcom/davidrr/security/auth/session/model/RefreshSession;
+com.davidrr.security.auth.session.port.RefreshSessionStore | JAVAP public abstract java.util.List<com.davidrr.security.auth.session.model.RefreshSession> findActiveByUsername(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/util/List;
+com.davidrr.security.auth.session.port.RefreshSessionStore | JAVAP public abstract java.util.List<com.davidrr.security.auth.session.model.RefreshSession> findActiveByUsernameOrderByCreatedAtDesc(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/util/List;
+com.davidrr.security.auth.session.port.RefreshSessionStore | JAVAP public abstract java.util.List<com.davidrr.security.auth.session.model.RefreshSession> findExpiredActiveSessions(java.time.Instant); | descriptor: (Ljava/time/Instant;)Ljava/util/List;
+com.davidrr.security.auth.session.port.RefreshSessionStore | JAVAP public abstract java.util.List<com.davidrr.security.auth.session.model.RefreshSession> saveAll(java.util.List<com.davidrr.security.auth.session.model.RefreshSession>); | descriptor: (Ljava/util/List;)Ljava/util/List;
+com.davidrr.security.auth.session.port.RefreshSessionStore | JAVAP public abstract java.util.Optional<com.davidrr.security.auth.session.model.RefreshSession> findById(java.lang.Long); | descriptor: (Ljava/lang/Long;)Ljava/util/Optional;
+com.davidrr.security.auth.session.port.RefreshSessionStore | JAVAP public abstract java.util.Optional<com.davidrr.security.auth.session.model.RefreshSession> findByTokenHash(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/util/Optional;
+com.davidrr.security.auth.session.port.RefreshSessionStore | JAVAP public abstract void deleteById(java.lang.Long); | descriptor: (Ljava/lang/Long;)V
+com.davidrr.security.auth.session.port.RefreshSessionStore | JAVAP public interface com.davidrr.security.auth.session.port.RefreshSessionStore
+com.davidrr.security.auth.session.port.RefreshSessionStore | METHOD deleteById (Ljava/lang/Long;)V modifiers=1025
+com.davidrr.security.auth.session.port.RefreshSessionStore | METHOD findActiveByUsername (Ljava/lang/String;)Ljava/util/List; modifiers=1025
+com.davidrr.security.auth.session.port.RefreshSessionStore | METHOD findActiveByUsernameOrderByCreatedAtDesc (Ljava/lang/String;)Ljava/util/List; modifiers=1025
+com.davidrr.security.auth.session.port.RefreshSessionStore | METHOD findById (Ljava/lang/Long;)Ljava/util/Optional; modifiers=1025
+com.davidrr.security.auth.session.port.RefreshSessionStore | METHOD findByTokenHash (Ljava/lang/String;)Ljava/util/Optional; modifiers=1025
+com.davidrr.security.auth.session.port.RefreshSessionStore | METHOD findExpiredActiveSessions (Ljava/time/Instant;)Ljava/util/List; modifiers=1025
+com.davidrr.security.auth.session.port.RefreshSessionStore | METHOD save (Lcom/davidrr/security/auth/session/model/RefreshSession;)Lcom/davidrr/security/auth/session/model/RefreshSession; modifiers=1025
+com.davidrr.security.auth.session.port.RefreshSessionStore | METHOD saveAll (Ljava/util/List;)Ljava/util/List; modifiers=1025
+com.davidrr.security.auth.session.service.RefreshTokenRevocationService | CLASS modifiers=1537
+com.davidrr.security.auth.session.service.RefreshTokenRevocationService | JAVAP public abstract void revokeAllActiveTokens(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.auth.session.service.RefreshTokenRevocationService | JAVAP public interface com.davidrr.security.auth.session.service.RefreshTokenRevocationService
+com.davidrr.security.auth.session.service.RefreshTokenRevocationService | METHOD revokeAllActiveTokens (Ljava/lang/String;Ljava/lang/String;)V modifiers=1025
+com.davidrr.security.auth.session.service.RefreshTokenService | CLASS modifiers=1537
+com.davidrr.security.auth.session.service.RefreshTokenService | JAVAP public abstract com.davidrr.security.auth.dto.RefreshRotationResult rotate(java.lang.String, com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/RefreshRotationResult;
+com.davidrr.security.auth.session.service.RefreshTokenService | JAVAP public abstract com.davidrr.security.auth.session.model.RefreshSession findSessionByToken(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession;
+com.davidrr.security.auth.session.service.RefreshTokenService | JAVAP public abstract java.lang.String createRefreshToken(java.lang.String, com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Ljava/lang/String;
+com.davidrr.security.auth.session.service.RefreshTokenService | JAVAP public abstract java.lang.String validateAndGetUsername(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/lang/String;
+com.davidrr.security.auth.session.service.RefreshTokenService | JAVAP public abstract java.util.List<com.davidrr.security.auth.dto.SessionResponse> getActiveSessions(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/util/List;
+com.davidrr.security.auth.session.service.RefreshTokenService | JAVAP public abstract void cleanupExpired(); | descriptor: ()V
+com.davidrr.security.auth.session.service.RefreshTokenService | JAVAP public abstract void revoke(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.session.service.RefreshTokenService | JAVAP public abstract void revokeAll(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.session.service.RefreshTokenService | JAVAP public abstract void revokeSession(java.lang.String, java.lang.Long); | descriptor: (Ljava/lang/String;Ljava/lang/Long;)V
+com.davidrr.security.auth.session.service.RefreshTokenService | JAVAP public interface com.davidrr.security.auth.session.service.RefreshTokenService
+com.davidrr.security.auth.session.service.RefreshTokenService | METHOD cleanupExpired ()V modifiers=1025
+com.davidrr.security.auth.session.service.RefreshTokenService | METHOD createRefreshToken (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Ljava/lang/String; modifiers=1025
+com.davidrr.security.auth.session.service.RefreshTokenService | METHOD findSessionByToken (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession; modifiers=1025
+com.davidrr.security.auth.session.service.RefreshTokenService | METHOD getActiveSessions (Ljava/lang/String;)Ljava/util/List; modifiers=1025
+com.davidrr.security.auth.session.service.RefreshTokenService | METHOD revoke (Ljava/lang/String;)V modifiers=1025
+com.davidrr.security.auth.session.service.RefreshTokenService | METHOD revokeAll (Ljava/lang/String;)V modifiers=1025
+com.davidrr.security.auth.session.service.RefreshTokenService | METHOD revokeSession (Ljava/lang/String;Ljava/lang/Long;)V modifiers=1025
+com.davidrr.security.auth.session.service.RefreshTokenService | METHOD rotate (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/RefreshRotationResult; modifiers=1025
+com.davidrr.security.auth.session.service.RefreshTokenService | METHOD validateAndGetUsername (Ljava/lang/String;)Ljava/lang/String; modifiers=1025
+com.davidrr.security.auth.session.service.impl.RefreshTokenRevocationServiceImpl | CLASS modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenRevocationServiceImpl | CTOR (Lcom/davidrr/security/auth/session/port/RefreshSessionStore;)V modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenRevocationServiceImpl | JAVAP public class com.davidrr.security.auth.session.service.impl.RefreshTokenRevocationServiceImpl implements com.davidrr.security.auth.session.service.RefreshTokenRevocationService
+com.davidrr.security.auth.session.service.impl.RefreshTokenRevocationServiceImpl | JAVAP public com.davidrr.security.auth.session.service.impl.RefreshTokenRevocationServiceImpl(com.davidrr.security.auth.session.port.RefreshSessionStore); | descriptor: (Lcom/davidrr/security/auth/session/port/RefreshSessionStore;)V
+com.davidrr.security.auth.session.service.impl.RefreshTokenRevocationServiceImpl | JAVAP public void revokeAllActiveTokens(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.auth.session.service.impl.RefreshTokenRevocationServiceImpl | METHOD revokeAllActiveTokens (Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | CLASS modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | CTOR (Lcom/davidrr/security/auth/session/service/RefreshTokenRevocationService;Lcom/davidrr/security/auth/session/port/RefreshSessionStore;Lcom/davidrr/security/audit/SecurityAuditService;)V modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | FIELD REASON_SUSPICIOUS_SESSION Ljava/lang/String; modifiers=25
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public class com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl implements com.davidrr.security.auth.session.service.RefreshTokenService
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public com.davidrr.security.auth.dto.RefreshRotationResult rotate(java.lang.String, com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/RefreshRotationResult;
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public com.davidrr.security.auth.session.model.RefreshSession findSessionByToken(java.lang.String); | descriptor: (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession;
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl(com.davidrr.security.auth.session.service.RefreshTokenRevocationService, com.davidrr.security.auth.session.port.RefreshSessionStore, com.davidrr.security.audit.SecurityAuditService); | descriptor: (Lcom/davidrr/security/auth/session/service/RefreshTokenRevocationService;Lcom/davidrr/security/auth/session/port/RefreshSessionStore;Lcom/davidrr/security/audit/SecurityAuditService;)V
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public java.lang.String createRefreshToken(java.lang.String, com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Ljava/lang/String;
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public java.lang.String validateAndGetUsername(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/lang/String;
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public java.util.List<com.davidrr.security.auth.dto.SessionResponse> getActiveSessions(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/util/List;
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public static final java.lang.String REASON_SUSPICIOUS_SESSION = "SUSPICIOUS_SESSION"; | descriptor: Ljava/lang/String;
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public void cleanupExpired(); | descriptor: ()V
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public void revoke(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public void revokeAll(java.lang.String); | descriptor: (Ljava/lang/String;)V
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | JAVAP public void revokeSession(java.lang.String, java.lang.Long); | descriptor: (Ljava/lang/String;Ljava/lang/Long;)V
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | METHOD cleanupExpired ()V modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | METHOD createRefreshToken (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | METHOD findSessionByToken (Ljava/lang/String;)Lcom/davidrr/security/auth/session/model/RefreshSession; modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | METHOD getActiveSessions (Ljava/lang/String;)Ljava/util/List; modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | METHOD revoke (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | METHOD revokeAll (Ljava/lang/String;)V modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | METHOD revokeSession (Ljava/lang/String;Ljava/lang/Long;)V modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | METHOD rotate (Ljava/lang/String;Lcom/davidrr/security/auth/dto/SessionFingerprint;)Lcom/davidrr/security/auth/dto/RefreshRotationResult; modifiers=1
+com.davidrr.security.auth.session.service.impl.RefreshTokenServiceImpl | METHOD validateAndGetUsername (Ljava/lang/String;)Ljava/lang/String; modifiers=1
+com.davidrr.security.auth.util.FingerprintUtils | CLASS modifiers=17
+com.davidrr.security.auth.util.FingerprintUtils | JAVAP public final class com.davidrr.security.auth.util.FingerprintUtils
+com.davidrr.security.auth.util.FingerprintUtils | JAVAP public static java.lang.String extractIp(jakarta.servlet.http.HttpServletRequest); | descriptor: (Ljakarta/servlet/http/HttpServletRequest;)Ljava/lang/String;
+com.davidrr.security.auth.util.FingerprintUtils | JAVAP public static java.lang.String extractUserAgent(jakarta.servlet.http.HttpServletRequest); | descriptor: (Ljakarta/servlet/http/HttpServletRequest;)Ljava/lang/String;
+com.davidrr.security.auth.util.FingerprintUtils | METHOD extractIp (Ljakarta/servlet/http/HttpServletRequest;)Ljava/lang/String; modifiers=9
+com.davidrr.security.auth.util.FingerprintUtils | METHOD extractUserAgent (Ljakarta/servlet/http/HttpServletRequest;)Ljava/lang/String; modifiers=9
+com.davidrr.security.auth.util.UserAgentUtils | CLASS modifiers=17
+com.davidrr.security.auth.util.UserAgentUtils | JAVAP public final class com.davidrr.security.auth.util.UserAgentUtils
+com.davidrr.security.auth.util.UserAgentUtils | JAVAP public static java.lang.String toDeviceLabel(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/lang/String;
+com.davidrr.security.auth.util.UserAgentUtils | METHOD toDeviceLabel (Ljava/lang/String;)Ljava/lang/String; modifiers=9
+com.davidrr.security.common.ApiError | CLASS modifiers=17
+com.davidrr.security.common.ApiError | CTOR (Ljava/time/Instant;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.common.ApiError | JAVAP public com.davidrr.security.common.ApiError(java.time.Instant, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String); | descriptor: (Ljava/time/Instant;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.common.ApiError | JAVAP public final boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.common.ApiError | JAVAP public final class com.davidrr.security.common.ApiError extends java.lang.Record
+com.davidrr.security.common.ApiError | JAVAP public final int hashCode(); | descriptor: ()I
+com.davidrr.security.common.ApiError | JAVAP public final java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.common.ApiError | JAVAP public int status(); | descriptor: ()I
+com.davidrr.security.common.ApiError | JAVAP public java.lang.String code(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.common.ApiError | JAVAP public java.lang.String error(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.common.ApiError | JAVAP public java.lang.String message(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.common.ApiError | JAVAP public java.lang.String path(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.common.ApiError | JAVAP public java.time.Instant timestamp(); | descriptor: ()Ljava/time/Instant;
+com.davidrr.security.common.ApiError | METHOD code ()Ljava/lang/String; modifiers=1
+com.davidrr.security.common.ApiError | METHOD equals (Ljava/lang/Object;)Z modifiers=17
+com.davidrr.security.common.ApiError | METHOD error ()Ljava/lang/String; modifiers=1
+com.davidrr.security.common.ApiError | METHOD hashCode ()I modifiers=17
+com.davidrr.security.common.ApiError | METHOD message ()Ljava/lang/String; modifiers=1
+com.davidrr.security.common.ApiError | METHOD path ()Ljava/lang/String; modifiers=1
+com.davidrr.security.common.ApiError | METHOD status ()I modifiers=1
+com.davidrr.security.common.ApiError | METHOD timestamp ()Ljava/time/Instant; modifiers=1
+com.davidrr.security.common.ApiError | METHOD toString ()Ljava/lang/String; modifiers=17
+com.davidrr.security.common.ApiError | RECORD 0 timestamp java.time.Instant
+com.davidrr.security.common.ApiError | RECORD 1 status int
+com.davidrr.security.common.ApiError | RECORD 2 error java.lang.String
+com.davidrr.security.common.ApiError | RECORD 3 code java.lang.String
+com.davidrr.security.common.ApiError | RECORD 4 message java.lang.String
+com.davidrr.security.common.ApiError | RECORD 5 path java.lang.String
+com.davidrr.security.common.ErrorCodes | CLASS modifiers=17
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_BAD_CREDENTIALS Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_FORBIDDEN Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_RATE_LIMIT_EXCEEDED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_REFRESH_EXPIRED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_REFRESH_INVALID Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_REFRESH_MISSING Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_REFRESH_REUSED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_REFRESH_REVOKED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_SESSION_NOT_FOUND Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_SUSPICIOUS_SESSION Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD AUTH_UNAUTHORIZED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD TOKEN_EXPIRED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD TOKEN_INVALID Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | FIELD VALIDATION_ERROR Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorCodes | JAVAP public final class com.davidrr.security.common.ErrorCodes
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_BAD_CREDENTIALS = "AUTH_BAD_CREDENTIALS"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_FORBIDDEN = "AUTH_FORBIDDEN"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_RATE_LIMIT_EXCEEDED = "AUTH_RATE_LIMIT_EXCEEDED"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_REFRESH_EXPIRED = "AUTH_REFRESH_EXPIRED"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_REFRESH_INVALID = "AUTH_REFRESH_INVALID"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_REFRESH_MISSING = "AUTH_REFRESH_MISSING"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_REFRESH_REUSED = "AUTH_REFRESH_REUSED"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_REFRESH_REVOKED = "AUTH_REFRESH_REVOKED"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_SESSION_NOT_FOUND = "AUTH_SESSION_NOT_FOUND"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_SUSPICIOUS_SESSION = "AUTH_SUSPICIOUS_SESSION"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String AUTH_UNAUTHORIZED = "AUTH_UNAUTHORIZED"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String TOKEN_EXPIRED = "TOKEN_EXPIRED"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String TOKEN_INVALID = "TOKEN_INVALID"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorCodes | JAVAP public static final java.lang.String VALIDATION_ERROR = "VALIDATION_ERROR"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | CLASS modifiers=17
+com.davidrr.security.common.ErrorMessages | FIELD BAD_CREDENTIALS Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD FORBIDDEN Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD RATE_LIMIT_EXCEEDED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD REFRESH_EXPIRED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD REFRESH_INVALID Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD REFRESH_MISSING Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD REFRESH_REUSED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD REFRESH_REVOKED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD SESSION_NOT_FOUND Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD SUSPICIOUS_SESSION Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD UNAUTHORIZED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | FIELD VALIDATION_FAILED Ljava/lang/String; modifiers=25
+com.davidrr.security.common.ErrorMessages | JAVAP public final class com.davidrr.security.common.ErrorMessages
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String BAD_CREDENTIALS = "Credenciales err\u00f3neas"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String FORBIDDEN = "Acceso denegado"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String RATE_LIMIT_EXCEEDED = "Demasiados intentos. Int\u00e9ntalo de nuevo m\u00e1s tarde."; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String REFRESH_EXPIRED = "Refresh token expirado"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String REFRESH_INVALID = "Refresh token inv\u00e1lido"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String REFRESH_MISSING = "Refresh token no encontrado"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String REFRESH_REUSED = "Se ha detectado reutilizaci\u00f3n de refresh token"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String REFRESH_REVOKED = "Refresh token revocado"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String SESSION_NOT_FOUND = "Sesi\u00f3n no encontrada"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String SUSPICIOUS_SESSION = "Sesi\u00f3n sospechosa detectada"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String UNAUTHORIZED = "No autorizado"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.ErrorMessages | JAVAP public static final java.lang.String VALIDATION_FAILED = "Validaci\u00f3n fallida"; | descriptor: Ljava/lang/String;
+com.davidrr.security.common.GlobalExceptionHandler | CLASS modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | CTOR ()V modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public class com.davidrr.security.common.GlobalExceptionHandler
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public com.davidrr.security.common.GlobalExceptionHandler(); | descriptor: ()V
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public org.springframework.http.ResponseEntity<com.davidrr.security.common.ApiError> handleBadCredentials(org.springframework.security.authentication.BadCredentialsException, jakarta.servlet.http.HttpServletRequest); | descriptor: (Lorg/springframework/security/authentication/BadCredentialsException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public org.springframework.http.ResponseEntity<com.davidrr.security.common.ApiError> handleRateLimitExceeded(com.davidrr.security.ratelimit.exception.RateLimitExceededException, jakarta.servlet.http.HttpServletRequest); | descriptor: (Lcom/davidrr/security/ratelimit/exception/RateLimitExceededException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public org.springframework.http.ResponseEntity<com.davidrr.security.common.ApiError> handleRefreshExpired(com.davidrr.security.auth.exception.RefreshTokenExpiredException, jakarta.servlet.http.HttpServletRequest); | descriptor: (Lcom/davidrr/security/auth/exception/RefreshTokenExpiredException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public org.springframework.http.ResponseEntity<com.davidrr.security.common.ApiError> handleRefreshInvalid(com.davidrr.security.auth.exception.RefreshTokenInvalidException, jakarta.servlet.http.HttpServletRequest); | descriptor: (Lcom/davidrr/security/auth/exception/RefreshTokenInvalidException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public org.springframework.http.ResponseEntity<com.davidrr.security.common.ApiError> handleRefreshMissing(com.davidrr.security.auth.exception.RefreshTokenMissingException, jakarta.servlet.http.HttpServletRequest); | descriptor: (Lcom/davidrr/security/auth/exception/RefreshTokenMissingException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public org.springframework.http.ResponseEntity<com.davidrr.security.common.ApiError> handleRefreshRevoked(com.davidrr.security.auth.exception.RefreshTokenRevokedException, jakarta.servlet.http.HttpServletRequest); | descriptor: (Lcom/davidrr/security/auth/exception/RefreshTokenRevokedException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public org.springframework.http.ResponseEntity<com.davidrr.security.common.ApiError> handleRefreshTokenReuse(com.davidrr.security.auth.exception.RefreshTokenReuseException, jakarta.servlet.http.HttpServletRequest); | descriptor: (Lcom/davidrr/security/auth/exception/RefreshTokenReuseException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public org.springframework.http.ResponseEntity<com.davidrr.security.common.ApiError> handleSessionNotFound(com.davidrr.security.auth.exception.SessionNotFoundException, jakarta.servlet.http.HttpServletRequest); | descriptor: (Lcom/davidrr/security/auth/exception/SessionNotFoundException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public org.springframework.http.ResponseEntity<com.davidrr.security.common.ApiError> handleSuspiciousSession(com.davidrr.security.auth.exception.SuspiciousSessionException, jakarta.servlet.http.HttpServletRequest); | descriptor: (Lcom/davidrr/security/auth/exception/SuspiciousSessionException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;
+com.davidrr.security.common.GlobalExceptionHandler | JAVAP public org.springframework.http.ResponseEntity<com.davidrr.security.common.ApiError> handleValidation(org.springframework.web.bind.MethodArgumentNotValidException, jakarta.servlet.http.HttpServletRequest); | descriptor: (Lorg/springframework/web/bind/MethodArgumentNotValidException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity;
+com.davidrr.security.common.GlobalExceptionHandler | METHOD handleBadCredentials (Lorg/springframework/security/authentication/BadCredentialsException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity; modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | METHOD handleRateLimitExceeded (Lcom/davidrr/security/ratelimit/exception/RateLimitExceededException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity; modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | METHOD handleRefreshExpired (Lcom/davidrr/security/auth/exception/RefreshTokenExpiredException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity; modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | METHOD handleRefreshInvalid (Lcom/davidrr/security/auth/exception/RefreshTokenInvalidException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity; modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | METHOD handleRefreshMissing (Lcom/davidrr/security/auth/exception/RefreshTokenMissingException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity; modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | METHOD handleRefreshRevoked (Lcom/davidrr/security/auth/exception/RefreshTokenRevokedException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity; modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | METHOD handleRefreshTokenReuse (Lcom/davidrr/security/auth/exception/RefreshTokenReuseException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity; modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | METHOD handleSessionNotFound (Lcom/davidrr/security/auth/exception/SessionNotFoundException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity; modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | METHOD handleSuspiciousSession (Lcom/davidrr/security/auth/exception/SuspiciousSessionException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity; modifiers=1
+com.davidrr.security.common.GlobalExceptionHandler | METHOD handleValidation (Lorg/springframework/web/bind/MethodArgumentNotValidException;Ljakarta/servlet/http/HttpServletRequest;)Lorg/springframework/http/ResponseEntity; modifiers=1
+com.davidrr.security.common.RestAccessDeniedHandler | CLASS modifiers=1
+com.davidrr.security.common.RestAccessDeniedHandler | CTOR (Lcom/fasterxml/jackson/databind/ObjectMapper;)V modifiers=1
+com.davidrr.security.common.RestAccessDeniedHandler | JAVAP public class com.davidrr.security.common.RestAccessDeniedHandler implements org.springframework.security.web.access.AccessDeniedHandler
+com.davidrr.security.common.RestAccessDeniedHandler | JAVAP public com.davidrr.security.common.RestAccessDeniedHandler(com.fasterxml.jackson.databind.ObjectMapper); | descriptor: (Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+com.davidrr.security.common.RestAccessDeniedHandler | JAVAP public void handle(jakarta.servlet.http.HttpServletRequest, jakarta.servlet.http.HttpServletResponse, org.springframework.security.access.AccessDeniedException) throws java.io.IOException; | descriptor: (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Lorg/springframework/security/access/AccessDeniedException;)V
+com.davidrr.security.common.RestAccessDeniedHandler | METHOD handle (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Lorg/springframework/security/access/AccessDeniedException;)V modifiers=1
+com.davidrr.security.common.RestAuthenticationEntryPoint | CLASS modifiers=1
+com.davidrr.security.common.RestAuthenticationEntryPoint | CTOR (Lcom/fasterxml/jackson/databind/ObjectMapper;)V modifiers=1
+com.davidrr.security.common.RestAuthenticationEntryPoint | JAVAP public class com.davidrr.security.common.RestAuthenticationEntryPoint implements org.springframework.security.web.AuthenticationEntryPoint
+com.davidrr.security.common.RestAuthenticationEntryPoint | JAVAP public com.davidrr.security.common.RestAuthenticationEntryPoint(com.fasterxml.jackson.databind.ObjectMapper); | descriptor: (Lcom/fasterxml/jackson/databind/ObjectMapper;)V
+com.davidrr.security.common.RestAuthenticationEntryPoint | JAVAP public void commence(jakarta.servlet.http.HttpServletRequest, jakarta.servlet.http.HttpServletResponse, org.springframework.security.core.AuthenticationException) throws java.io.IOException; | descriptor: (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Lorg/springframework/security/core/AuthenticationException;)V
+com.davidrr.security.common.RestAuthenticationEntryPoint | METHOD commence (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Lorg/springframework/security/core/AuthenticationException;)V modifiers=1
+com.davidrr.security.config.SecurityConfig | CLASS modifiers=1
+com.davidrr.security.config.SecurityConfig | CTOR (Lcom/davidrr/security/jwt/JwtAuthenticationFilter;Lcom/davidrr/security/common/RestAuthenticationEntryPoint;Lcom/davidrr/security/common/RestAccessDeniedHandler;)V modifiers=1
+com.davidrr.security.config.SecurityConfig | JAVAP public class com.davidrr.security.config.SecurityConfig
+com.davidrr.security.config.SecurityConfig | JAVAP public com.davidrr.security.config.SecurityConfig(com.davidrr.security.jwt.JwtAuthenticationFilter, com.davidrr.security.common.RestAuthenticationEntryPoint, com.davidrr.security.common.RestAccessDeniedHandler); | descriptor: (Lcom/davidrr/security/jwt/JwtAuthenticationFilter;Lcom/davidrr/security/common/RestAuthenticationEntryPoint;Lcom/davidrr/security/common/RestAccessDeniedHandler;)V
+com.davidrr.security.config.SecurityConfig | JAVAP public org.springframework.security.authentication.AuthenticationManager authenticationManager(org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration) throws java.lang.Exception; | descriptor: (Lorg/springframework/security/config/annotation/authentication/configuration/AuthenticationConfiguration;)Lorg/springframework/security/authentication/AuthenticationManager;
+com.davidrr.security.config.SecurityConfig | JAVAP public org.springframework.security.crypto.password.PasswordEncoder passwordEncoder(); | descriptor: ()Lorg/springframework/security/crypto/password/PasswordEncoder;
+com.davidrr.security.config.SecurityConfig | JAVAP public org.springframework.security.web.SecurityFilterChain securityFilterChain(org.springframework.security.config.annotation.web.builders.HttpSecurity) throws java.lang.Exception; | descriptor: (Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;)Lorg/springframework/security/web/SecurityFilterChain;
+com.davidrr.security.config.SecurityConfig | JAVAP public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource(java.lang.String, java.lang.String, java.lang.String, boolean); | descriptor: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lorg/springframework/web/cors/CorsConfigurationSource;
+com.davidrr.security.config.SecurityConfig | METHOD authenticationManager (Lorg/springframework/security/config/annotation/authentication/configuration/AuthenticationConfiguration;)Lorg/springframework/security/authentication/AuthenticationManager; modifiers=1
+com.davidrr.security.config.SecurityConfig | METHOD corsConfigurationSource (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lorg/springframework/web/cors/CorsConfigurationSource; modifiers=1
+com.davidrr.security.config.SecurityConfig | METHOD passwordEncoder ()Lorg/springframework/security/crypto/password/PasswordEncoder; modifiers=1
+com.davidrr.security.config.SecurityConfig | METHOD securityFilterChain (Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;)Lorg/springframework/security/web/SecurityFilterChain; modifiers=1
+com.davidrr.security.jwt.JwtAuthenticationFilter | CLASS modifiers=1
+com.davidrr.security.jwt.JwtAuthenticationFilter | CTOR (Lcom/davidrr/security/jwt/JwtService;Lcom/davidrr/security/auth/port/UserProvider;)V modifiers=1
+com.davidrr.security.jwt.JwtAuthenticationFilter | JAVAP protected void doFilterInternal(jakarta.servlet.http.HttpServletRequest, jakarta.servlet.http.HttpServletResponse, jakarta.servlet.FilterChain) throws jakarta.servlet.ServletException, java.io.IOException; | descriptor: (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Ljakarta/servlet/FilterChain;)V
+com.davidrr.security.jwt.JwtAuthenticationFilter | JAVAP public class com.davidrr.security.jwt.JwtAuthenticationFilter extends org.springframework.web.filter.OncePerRequestFilter
+com.davidrr.security.jwt.JwtAuthenticationFilter | JAVAP public com.davidrr.security.jwt.JwtAuthenticationFilter(com.davidrr.security.jwt.JwtService, com.davidrr.security.auth.port.UserProvider); | descriptor: (Lcom/davidrr/security/jwt/JwtService;Lcom/davidrr/security/auth/port/UserProvider;)V
+com.davidrr.security.jwt.JwtAuthenticationFilter | METHOD doFilterInternal (Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Ljakarta/servlet/FilterChain;)V modifiers=4
+com.davidrr.security.jwt.JwtService | CLASS modifiers=1
+com.davidrr.security.jwt.JwtService | CTOR ()V modifiers=1
+com.davidrr.security.jwt.JwtService | JAVAP public boolean isTokenValid(java.lang.String, org.springframework.security.core.userdetails.UserDetails); | descriptor: (Ljava/lang/String;Lorg/springframework/security/core/userdetails/UserDetails;)Z
+com.davidrr.security.jwt.JwtService | JAVAP public class com.davidrr.security.jwt.JwtService
+com.davidrr.security.jwt.JwtService | JAVAP public com.davidrr.security.jwt.JwtService(); | descriptor: ()V
+com.davidrr.security.jwt.JwtService | JAVAP public java.lang.String extractJti(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/lang/String;
+com.davidrr.security.jwt.JwtService | JAVAP public java.lang.String extractUsername(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/lang/String;
+com.davidrr.security.jwt.JwtService | JAVAP public java.lang.String generateToken(java.lang.String, java.util.List<java.lang.String>); | descriptor: (Ljava/lang/String;Ljava/util/List;)Ljava/lang/String;
+com.davidrr.security.jwt.JwtService | JAVAP public java.lang.String generateToken(org.springframework.security.core.userdetails.UserDetails); | descriptor: (Lorg/springframework/security/core/userdetails/UserDetails;)Ljava/lang/String;
+com.davidrr.security.jwt.JwtService | JAVAP public java.util.List<java.lang.String> extractRoles(java.lang.String); | descriptor: (Ljava/lang/String;)Ljava/util/List;
+com.davidrr.security.jwt.JwtService | METHOD extractJti (Ljava/lang/String;)Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.JwtService | METHOD extractRoles (Ljava/lang/String;)Ljava/util/List; modifiers=1
+com.davidrr.security.jwt.JwtService | METHOD extractUsername (Ljava/lang/String;)Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.JwtService | METHOD generateToken (Ljava/lang/String;Ljava/util/List;)Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.JwtService | METHOD generateToken (Lorg/springframework/security/core/userdetails/UserDetails;)Ljava/lang/String; modifiers=1
+com.davidrr.security.jwt.JwtService | METHOD isTokenValid (Ljava/lang/String;Lorg/springframework/security/core/userdetails/UserDetails;)Z modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitConfig | CLASS modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitConfig | CTOR ()V modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitConfig | JAVAP public class com.davidrr.security.ratelimit.config.RateLimitConfig
+com.davidrr.security.ratelimit.config.RateLimitConfig | JAVAP public com.davidrr.security.ratelimit.config.RateLimitConfig(); | descriptor: ()V
+com.davidrr.security.ratelimit.config.RateLimitProperties | CLASS modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties | CTOR ()V modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties | JAVAP protected boolean canEqual(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.ratelimit.config.RateLimitProperties | JAVAP public boolean equals(java.lang.Object); | descriptor: (Ljava/lang/Object;)Z
+com.davidrr.security.ratelimit.config.RateLimitProperties | JAVAP public class com.davidrr.security.ratelimit.config.RateLimitProperties
+com.davidrr.security.ratelimit.config.RateLimitProperties | JAVAP public com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket getLogin(); | descriptor: ()Lcom/davidrr/security/ratelimit/config/RateLimitProperties$Bucket;
+com.davidrr.security.ratelimit.config.RateLimitProperties | JAVAP public com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket getRefresh(); | descriptor: ()Lcom/davidrr/security/ratelimit/config/RateLimitProperties$Bucket;
+com.davidrr.security.ratelimit.config.RateLimitProperties | JAVAP public com.davidrr.security.ratelimit.config.RateLimitProperties(); | descriptor: ()V
+com.davidrr.security.ratelimit.config.RateLimitProperties | JAVAP public int hashCode(); | descriptor: ()I
+com.davidrr.security.ratelimit.config.RateLimitProperties | JAVAP public java.lang.String toString(); | descriptor: ()Ljava/lang/String;
+com.davidrr.security.ratelimit.config.RateLimitProperties | JAVAP public void setLogin(com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket); | descriptor: (Lcom/davidrr/security/ratelimit/config/RateLimitProperties$Bucket;)V
+com.davidrr.security.ratelimit.config.RateLimitProperties | JAVAP public void setRefresh(com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket); | descriptor: (Lcom/davidrr/security/ratelimit/config/RateLimitProperties$Bucket;)V
+com.davidrr.security.ratelimit.config.RateLimitProperties | METHOD canEqual (Ljava/lang/Object;)Z modifiers=4
+com.davidrr.security.ratelimit.config.RateLimitProperties | METHOD equals (Ljava/lang/Object;)Z modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties | METHOD getLogin ()Lcom/davidrr/security/ratelimit/config/RateLimitProperties$Bucket; modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties | METHOD getRefresh ()Lcom/davidrr/security/ratelimit/config/RateLimitProperties$Bucket; modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties | METHOD hashCode ()I modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties | METHOD setLogin (Lcom/davidrr/security/ratelimit/config/RateLimitProperties$Bucket;)V modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties | METHOD setRefresh (Lcom/davidrr/security/ratelimit/config/RateLimitProperties$Bucket;)V modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties | METHOD toString ()Ljava/lang/String; modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | CLASS modifiers=9
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | CTOR ()V modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | FIELD LOGIN Ljava/lang/String; modifiers=25
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | FIELD REFRESH Ljava/lang/String; modifiers=25
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | JAVAP public boolean isEnabled(); | descriptor: ()Z
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | JAVAP public class com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | JAVAP public com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket(); | descriptor: ()V
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | JAVAP public int getMaxAttempts(); | descriptor: ()I
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | JAVAP public long getWindowSeconds(); | descriptor: ()J
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | JAVAP public static final java.lang.String LOGIN = "login"; | descriptor: Ljava/lang/String;
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | JAVAP public static final java.lang.String REFRESH = "refresh"; | descriptor: Ljava/lang/String;
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | JAVAP public void setEnabled(boolean); | descriptor: (Z)V
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | JAVAP public void setMaxAttempts(int); | descriptor: (I)V
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | JAVAP public void setWindowSeconds(long); | descriptor: (J)V
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | METHOD getMaxAttempts ()I modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | METHOD getWindowSeconds ()J modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | METHOD isEnabled ()Z modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | METHOD setEnabled (Z)V modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | METHOD setMaxAttempts (I)V modifiers=1
+com.davidrr.security.ratelimit.config.RateLimitProperties$Bucket | METHOD setWindowSeconds (J)V modifiers=1
+com.davidrr.security.ratelimit.exception.RateLimitExceededException | CLASS modifiers=1
+com.davidrr.security.ratelimit.exception.RateLimitExceededException | CTOR ()V modifiers=1
+com.davidrr.security.ratelimit.exception.RateLimitExceededException | JAVAP public class com.davidrr.security.ratelimit.exception.RateLimitExceededException extends java.lang.RuntimeException
+com.davidrr.security.ratelimit.exception.RateLimitExceededException | JAVAP public com.davidrr.security.ratelimit.exception.RateLimitExceededException(); | descriptor: ()V
+com.davidrr.security.ratelimit.service.InMemoryRateLimiterService | CLASS modifiers=1
+com.davidrr.security.ratelimit.service.InMemoryRateLimiterService | CTOR (Lcom/davidrr/security/ratelimit/config/RateLimitProperties;)V modifiers=1
+com.davidrr.security.ratelimit.service.InMemoryRateLimiterService | JAVAP public class com.davidrr.security.ratelimit.service.InMemoryRateLimiterService implements com.davidrr.security.ratelimit.service.RateLimiterService
+com.davidrr.security.ratelimit.service.InMemoryRateLimiterService | JAVAP public com.davidrr.security.ratelimit.service.InMemoryRateLimiterService(com.davidrr.security.ratelimit.config.RateLimitProperties); | descriptor: (Lcom/davidrr/security/ratelimit/config/RateLimitProperties;)V
+com.davidrr.security.ratelimit.service.InMemoryRateLimiterService | JAVAP public void check(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.ratelimit.service.InMemoryRateLimiterService | JAVAP public void onFailure(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.ratelimit.service.InMemoryRateLimiterService | JAVAP public void onSuccess(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.ratelimit.service.InMemoryRateLimiterService | METHOD check (Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.ratelimit.service.InMemoryRateLimiterService | METHOD onFailure (Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.ratelimit.service.InMemoryRateLimiterService | METHOD onSuccess (Ljava/lang/String;Ljava/lang/String;)V modifiers=1
+com.davidrr.security.ratelimit.service.RateLimiterService | CLASS modifiers=1537
+com.davidrr.security.ratelimit.service.RateLimiterService | JAVAP public abstract void check(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.ratelimit.service.RateLimiterService | JAVAP public abstract void onFailure(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.ratelimit.service.RateLimiterService | JAVAP public abstract void onSuccess(java.lang.String, java.lang.String); | descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+com.davidrr.security.ratelimit.service.RateLimiterService | JAVAP public interface com.davidrr.security.ratelimit.service.RateLimiterService
+com.davidrr.security.ratelimit.service.RateLimiterService | METHOD check (Ljava/lang/String;Ljava/lang/String;)V modifiers=1025
+com.davidrr.security.ratelimit.service.RateLimiterService | METHOD onFailure (Ljava/lang/String;Ljava/lang/String;)V modifiers=1025
+com.davidrr.security.ratelimit.service.RateLimiterService | METHOD onSuccess (Ljava/lang/String;Ljava/lang/String;)V modifiers=1025
+com.davidrr.security.ratelimit.util.RateLimitKeyFactory | CLASS modifiers=1
+com.davidrr.security.ratelimit.util.RateLimitKeyFactory | CTOR ()V modifiers=1
+com.davidrr.security.ratelimit.util.RateLimitKeyFactory | JAVAP public class com.davidrr.security.ratelimit.util.RateLimitKeyFactory
+com.davidrr.security.ratelimit.util.RateLimitKeyFactory | JAVAP public com.davidrr.security.ratelimit.util.RateLimitKeyFactory(); | descriptor: ()V
+com.davidrr.security.ratelimit.util.RateLimitKeyFactory | JAVAP public java.lang.String loginKey(com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Lcom/davidrr/security/auth/dto/SessionFingerprint;)Ljava/lang/String;
+com.davidrr.security.ratelimit.util.RateLimitKeyFactory | JAVAP public java.lang.String refreshKey(com.davidrr.security.auth.dto.SessionFingerprint); | descriptor: (Lcom/davidrr/security/auth/dto/SessionFingerprint;)Ljava/lang/String;
+com.davidrr.security.ratelimit.util.RateLimitKeyFactory | METHOD loginKey (Lcom/davidrr/security/auth/dto/SessionFingerprint;)Ljava/lang/String; modifiers=1
+com.davidrr.security.ratelimit.util.RateLimitKeyFactory | METHOD refreshKey (Lcom/davidrr/security/auth/dto/SessionFingerprint;)Ljava/lang/String; modifiers=1
